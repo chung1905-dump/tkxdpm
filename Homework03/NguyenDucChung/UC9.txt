@@ -1,8 +1,8 @@
-Code: UC7.
-Name: Kiem tra danh sach mat hang.
-Brief Description: Warehouse kiem tra danh sach dat hang
+Code: UC9.
+Name: Kiểm tra danh sách đặt hàng.
+Brief Description: Warehouse kiểm tra danh sách đặt hàng
 Pre-conditions:
-- Da dang nhap voi tai khoan Warehouse.
+- Đã đăng nhập với tài khoản Warehouse.
 Main flow:
-1. Nguoi dung chon xem danh sach mat hang.
-2. He thong hien thi danh sach mat hang da duoc luu.
+1. Người dùng chọn xem danh sách sản phẩm.
+2. Hệ thống hiển thị danh sách mặt hàng đã lưu.

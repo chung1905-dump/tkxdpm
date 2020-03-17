@@ -1,17 +1,17 @@
 Code: UC7.
-Name: Yeu cau nhap hang.
-Brief Description: Bo phan dat hang quoc te yeu cau cac Site cung cap san pham.
+Name: Yêu cầu nhập hàng.
+Brief Description: Bộ phận đặt hàng quốc tế yêu cầu các Site cung cấp sản phẩm.
 Pre-conditions:
-- Da dang nhap voi tai khoan bo phan dat hang quoc te
-- Bo phan dat hang da chon duoc cac Site nhap hang thoa man
+- Đã đăng nhập với tài khoản bộ phận đặt hàng quốc tế.
+- Bộ phận đặt hàng đã chọn được các Site nhập hàng thỏa mãn.
 Main flow:
-1. Nguoi dung an vao nut gui yeu cau.
-2. He thong hien thi form cac mat hang.
-3. Nguoi dung dien cac thong tin ve mat hang:
+1. Người dung ấn vào núi gửi yêu cầu.
+2. Hệ thông hiển thị form các mặt hàng.
+3. Người dùng điền các thông tin về mặt hàng:
   - Site code
   - Merchandise code
   - Quantity ordered
   - Unit
   - Delivery means.
-3. Nguoi dung gui thong tin len he thong.
-4. He thong luu lai.
+4. Người dùng gửi thông tin lên hệ thống
+5. Hệ thống lưu lại.
