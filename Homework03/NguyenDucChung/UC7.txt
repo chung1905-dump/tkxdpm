@@ -2,6 +2,16 @@ Code: UC7.
 Name: Yeu cau nhap hang.
 Brief Description: Bo phan dat hang quoc te yeu cau cac Site cung cap san pham.
 Pre-conditions:
+- Da dang nhap voi tai khoan bo phan dat hang quoc te
 - Bo phan dat hang da chon duoc cac Site nhap hang thoa man
 Main flow:
-1. Bo phan dat hang quoc te gui yeu cau mat hang cho cac Site
+1. Nguoi dung an vao nut gui yeu cau.
+2. He thong hien thi form cac mat hang.
+3. Nguoi dung dien cac thong tin ve mat hang:
+  - Site code
+  - Merchandise code
+  - Quantity ordered
+  - Unit
+  - Delivery means.
+3. Nguoi dung gui thong tin len he thong.
+4. He thong luu lai.

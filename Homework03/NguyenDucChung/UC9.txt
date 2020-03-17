@@ -1,0 +1,8 @@
+Code: UC7.
+Name: Kiem tra danh sach mat hang.
+Brief Description: Warehouse kiem tra danh sach dat hang
+Pre-conditions:
+- Da dang nhap voi tai khoan Warehouse.
+Main flow:
+1. Nguoi dung chon xem danh sach mat hang.
+2. He thong hien thi danh sach mat hang da duoc luu.
