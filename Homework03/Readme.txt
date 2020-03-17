@@ -1,7 +1,7 @@
 Phân công công việc:
-Nguyễn Đức Đạt: Thay đổi thông tin vận chuyển, Đặt hàng.
-Nguyễn Văn Chung
-Trần Văn Lượng: Thay đổi mặt hàng kinh doanh, Kiểm tra số lượng hàng trong sites.
-Trần Quang Anh: Lưu thông tin kho, Lưu thông tin vận chuyển.
-Bùi Anh Đức
+Nguyễn Đức Đạt: đặc tả uc Thay đổi thông tin vận chuyển, Đặt hàng.
+Nguyễn Văn Chung: đặc tả uc Yêu cầu nhập hàng, Lấy danh sách hàng để kiểm tra.
+Trần Văn Lượng: đặc tả uc Thay đổi mặt hàng kinh doanh, Kiểm tra số lượng hàng trong sites.
+Trần Quang Anh: đặc tả uc Lưu thông tin kho, Lưu thông tin vận chuyển.
+Bùi Anh Đức: đặc tả uc Tìm kiếm site có mặt hàng, Chọn site nhập hàng.
 
