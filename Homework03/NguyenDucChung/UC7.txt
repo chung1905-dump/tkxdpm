@@ -1,0 +1,15 @@
+Code: UC7.
+Name: Yeu cau nhap hang.
+Brief Description: Bo phan dat hang quoc te yeu cau cac Site cung cap san pham.
+Main flow:
+1. Bo phan dat hang quoc te kiem tra so luong hang hoa va ngay van chuyen hang o cac Site: cac Site thoa man.
+2. Gui so luong hang hoa mong muon cho cac Site neu cac site thoa man yeu cau dat hang.
+Alternative flow:
+1. Cac mat hang ko the thoa man o 1 Site.
+2. Chia nho don hang, yeu cau don hang tu nhieu Site.
+3. Gui yeu cau.
+Exception Flow:
+1. Cac mat hang ko thoa man o 1 Site.
+2. Cac mat hang ko thoa man o tat ca cac Site.
+3. Dua ra thong bao loi~
+
