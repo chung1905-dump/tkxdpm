@@ -1,0 +1,8 @@
+Code: UC9.
+Name: Kiểm tra danh sách đặt hàng.
+Brief Description: Warehouse kiểm tra danh sách đặt hàng
+Pre-conditions:
+- Đã đăng nhập với tài khoản Warehouse.
+Main flow:
+1. Người dùng chọn xem danh sách sản phẩm.
+2. Hệ thống hiển thị danh sách mặt hàng đã lưu.

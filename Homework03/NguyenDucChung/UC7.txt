@@ -1,0 +1,17 @@
+Code: UC7.
+Name: Yêu cầu nhập hàng.
+Brief Description: Bộ phận đặt hàng quốc tế yêu cầu các Site cung cấp sản phẩm.
+Pre-conditions:
+- Đã đăng nhập với tài khoản bộ phận đặt hàng quốc tế.
+- Bộ phận đặt hàng đã chọn được các Site nhập hàng thỏa mãn.
+Main flow:
+1. Người dung ấn vào núi gửi yêu cầu.
+2. Hệ thông hiển thị form các mặt hàng.
+3. Người dùng điền các thông tin về mặt hàng:
+  - Site code
+  - Merchandise code
+  - Quantity ordered
+  - Unit
+  - Delivery means.
+4. Người dùng gửi thông tin lên hệ thống
+5. Hệ thống lưu lại.
