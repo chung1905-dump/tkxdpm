@@ -1,3 +1,4 @@
+package QuanLySite;
 
 public class Site {
 	private String id;

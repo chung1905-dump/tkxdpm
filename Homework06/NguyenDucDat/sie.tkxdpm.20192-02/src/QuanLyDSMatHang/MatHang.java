@@ -1,3 +1,4 @@
+package QuanLyDSMatHang;
 
 public class MatHang {
 	private String id;
