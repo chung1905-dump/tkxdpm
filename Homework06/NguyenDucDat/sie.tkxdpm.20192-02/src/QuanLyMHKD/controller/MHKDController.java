@@ -12,6 +12,6 @@ public class MHKDController implements IController {
     }
 
     public void onSubmit(ActionEvent e) {
-        main.Application.runController(new NextController());
+        main.Application.runController(new NextController(), 1);
     }
 }
