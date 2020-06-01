@@ -1,11 +1,11 @@
-package QuanLyMHKD;
+package QuanLyMHKD.setup;
 
 import setup.database.ISetup;
 
-public class MHKDSetup implements ISetup {
+public class MHKDSchema implements ISetup {
     public String getRawSQL() {
-        return "CREATE TABLE mat_hang_kinh_doanh " +
-                "(id INTEGER not NULL, " +
+        return "CREATE TABLE IF NOT EXISTS mat_hang_kinh_doanh " +
+                "(id INTEGER NOT NULL AUTO_INCREMENT, " +
                 " ten VARCHAR(255), " +
                 " merchandise VARCHAR(255), " +
                 " quantity INTEGER, " +

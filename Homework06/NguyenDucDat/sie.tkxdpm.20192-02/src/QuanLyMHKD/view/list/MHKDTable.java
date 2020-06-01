@@ -1,5 +1,6 @@
 package QuanLyMHKD.view.list;
 
+import QuanLyMHKD.model.MHKD;
 import main.IView;
 
 import javax.swing.*;
@@ -7,13 +8,18 @@ import java.awt.*;
 
 public class MHKDTable implements IView {
     public Container draw() {
-        String column[] = {"ID", "Name", "Sitecode", "Qty", "Unit"};
-        String data[][] = {
-                {"1", "Test 1", "ABCD", "4", "hop"},
-                {"2", "Test 2", "EFGH", "1000", "lit"},
-                {"3", "Test 3", "VIN", "1", "CHIEC"}
-        };
+        Container rootContainer = new Container();
+
+        MHKD mhkd = new MHKD();
+        String[] column = {"ID", "Name", "Sitecode", "Qty", "Unit"};
+        String[][] data = mhkd.loadAll();
+
         JTable table = new JTable(data, column);
-        return table;
+        JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+
+        rootContainer.setLayout(new BorderLayout(0, 10));
+        rootContainer.add(scrollPane, BorderLayout.CENTER);
+
+        return rootContainer;
     }
 }

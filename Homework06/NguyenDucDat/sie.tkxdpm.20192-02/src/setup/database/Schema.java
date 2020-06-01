@@ -2,7 +2,8 @@ package setup.database;
 
 import java.sql.*;
 
-import QuanLyMHKD.MHKDSetup;
+import QuanLyMHKD.setup.MHKDFixture;
+import QuanLyMHKD.setup.MHKDSchema;
 import util.DatabaseConfig;
 
 public class Schema {
@@ -40,7 +41,8 @@ public class Schema {
 
     private ISetup[] loadSetup() {
         return new ISetup[]{
-                new MHKDSetup(),
+                new MHKDSchema(),
+                new MHKDFixture(),
                 // @todo: Insert more setup classes here
         };
     }
