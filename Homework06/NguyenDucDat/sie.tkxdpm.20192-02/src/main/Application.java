@@ -4,7 +4,6 @@ import QuanLyMHKD.controller.MHKDController;
 
 import javax.swing.*;
 import java.awt.*;
-import java.util.concurrent.atomic.AtomicBoolean;
 
 public class Application {
     private static JFrame f;
