@@ -175,26 +175,26 @@ public class TransportationWindow extends Container implements IView {
 			addRecord = false;
 			btnUpdateActionPerformed(evt);
 		});
-		addContainerListener(new ContainerListener() {
-
-			@Override
-			public void componentRemoved(ContainerEvent e) {
-				// TODO Auto-generated method stub
-
-			}
-
-			@Override
-			public void componentAdded(ContainerEvent e) {
-				// TODO Auto-generated method stub
-		        try {
-		        	System.out.println("loadRecords");
-					loadRecords();
-				} catch (SQLException err) {
-					// TODO Auto-generated catch block
-					err.printStackTrace();
-				}
-			}
-		});
+//		addContainerListener(new ContainerListener() {
+//
+//			@Override
+//			public void componentRemoved(ContainerEvent e) {
+//				// TODO Auto-generated method stub
+//
+//			}
+//
+//			@Override
+//			public void componentAdded(ContainerEvent e) {
+//				// TODO Auto-generated method stub
+//		        try {
+//		        	System.out.println("loadRecords");
+//					loadRecords();
+//				} catch (SQLException err) {
+//					// TODO Auto-generated catch block
+//					err.printStackTrace();
+//				}
+//			}
+//		});
 		btnDelete.setText("Delete");
 		btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
@@ -302,7 +302,11 @@ public class TransportationWindow extends Container implements IView {
 			java.util.logging.Logger.getLogger(TransportationWindow.class.getName()).log(java.util.logging.Level.SEVERE,
 					null, ex);
 		}
-
+		try {
+			loadRecords();
+		} catch (SQLException ex) {
+			System.out.println(ex.getMessage());
+		}
 		return this;
 	}
 
