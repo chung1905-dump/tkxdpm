@@ -1,16 +1,16 @@
-package QuanLyPhuongThucVanChuyen;
+package QuanLyPhuongThucVanChuyen.view;
 
 import JDBC.DBUtilities;
+import QuanLyPhuongThucVanChuyen.model.ResultSetTableModel;
+import main.IView;
 
-import java.awt.FlowLayout;
-import java.awt.GridLayout;
+import java.awt.*;
 import java.sql.SQLException;
-import javax.swing.JOptionPane;
-import javax.swing.SwingConstants;
+import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableCellRenderer;
 
-public class TransportationWindow extends javax.swing.JDialog
+public class TransportationWindow extends Container implements IView
 {
     private javax.swing.JComboBox<String> cboGender;
     private javax.swing.JTable jTable1;
@@ -91,8 +91,7 @@ public class TransportationWindow extends javax.swing.JDialog
         jTable1.getColumnModel().getColumn(0).setCellRenderer(rightRenderer);
     }
 
-    public TransportationWindow(java.awt.Frame parent, boolean modal) {
-        super(parent, modal);
+    public TransportationWindow() {
         initComponents();
     }
 
@@ -118,13 +117,6 @@ public class TransportationWindow extends javax.swing.JDialog
         javax.swing.JScrollPane jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        addWindowListener(new java.awt.event.WindowAdapter() {
-            public void windowOpened(java.awt.event.WindowEvent evt) {
-                formWindowOpened(evt);
-            }
-        });
-
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportation Records Editor", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jLabel2.setText("SiteCode:");
@@ -149,7 +141,6 @@ public class TransportationWindow extends javax.swing.JDialog
         jPanel1.add(txtByAir);
         jPanel1.add(jLabel7);
         jPanel1.add(txtOthers);
-        
 
         btnAddNew.setText("Add New");
         btnAddNew.addActionListener(evt -> {
@@ -183,8 +174,8 @@ public class TransportationWindow extends javax.swing.JDialog
         jTable1.setAutoResizeMode(javax.swing.JTable.AUTO_RESIZE_ALL_COLUMNS);
         jScrollPane1.setViewportView(jTable1);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
+        this.setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
@@ -220,20 +211,6 @@ public class TransportationWindow extends javax.swing.JDialog
                     .addComponent(btnClose))
                 .addContainerGap(21, Short.MAX_VALUE))
         );
-
-        pack();
-    }
-
-    private void formWindowOpened(java.awt.event.WindowEvent evt)
-    {
-        try
-        {
-            loadRecords();
-        }
-        catch (SQLException ex)
-        {
-            System.out.println(ex.getMessage());
-        }
     }
 
     private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {
@@ -279,7 +256,8 @@ public class TransportationWindow extends javax.swing.JDialog
         }
     }
 
-    public static void main(String args[]) {
+    @Override
+    public Container draw() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
                 if ("Nimbus".equals(info.getName())) {
@@ -287,29 +265,10 @@ public class TransportationWindow extends javax.swing.JDialog
                     break;
                 }
             }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(TransportationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(TransportationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(TransportationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(TransportationWindow.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
 
-        /* Create and display the dialog */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-            	TransportationWindow dialog = new TransportationWindow(new javax.swing.JFrame(), true);
-                dialog.addWindowListener(new java.awt.event.WindowAdapter() {
-                    @Override
-                    public void windowClosing(java.awt.event.WindowEvent e) {
-                        System.exit(0);
-                    }
-                });
-                dialog.setVisible(true);
-            }
-        });
+        return this;
     }
 }
