@@ -1,4 +1,4 @@
-package QuanLyPhuongThucVanChuyen;
+package QuanLyPhuongThucVanChuyen.model;
 
 import JDBC.DBUtilities;
 

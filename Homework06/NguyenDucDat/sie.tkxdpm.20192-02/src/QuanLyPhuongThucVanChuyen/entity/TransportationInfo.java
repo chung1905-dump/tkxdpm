@@ -1,4 +1,4 @@
-package QuanLyPhuongThucVanChuyen;
+package QuanLyPhuongThucVanChuyen.entity;
 
 public class TransportationInfo {
 	String siteCode;
