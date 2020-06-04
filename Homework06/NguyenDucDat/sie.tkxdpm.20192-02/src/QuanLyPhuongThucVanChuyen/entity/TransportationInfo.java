@@ -3,7 +3,9 @@ package QuanLyPhuongThucVanChuyen.entity;
 public class TransportationInfo {
 	String siteCode;
 	String siteName;
-
+	int byShip;
+	int byAir;
+	String others;
 	/**
 	 * @param siteCode
 	 * @param siteName
@@ -90,7 +92,7 @@ public class TransportationInfo {
 		this.others = others;
 	}
 
-	int byShip;
-	int byAir;
-	String others;
+	public void display() {
+		System.out.println(this.getSiteCode()+"-"+this.getSiteName()+"-"+this.getByShip()+"-"+this.getByAir()+"-"+this.others);
+	}
 }
