@@ -31,8 +31,9 @@ public class Application {
             Container c = f.getContentPane();
             c.setLocation(c.getWidth(), 0);
             new Timer(1, e -> {
-                c.setLocation(c.getX() - 1, 0);
+                c.setLocation(c.getX() - 10, 0);
                 if (c.getX() <= 0) {
+                    c.setLocation(0, 0);
                     ((Timer) e.getSource()).stop();
                 }
             }).start();
