@@ -21,8 +21,9 @@ public class MainView implements IView {
         rootContainer.setLayout(layout);
         addBtn("Phuong thuc van chuyen", e -> controller.moveToTransportation());
         addBtn("Mat hang kinh doanh", e -> controller.moveToMHKD());
-        addBtn("QUIT", e -> System.out.println("QUIT"));
-
+//        addBtn("QUIT", e -> System.out.println("QUIT"));
+        addBtn("QUIT", e -> System.exit(1));
+        
         return rootContainer;
     }
 

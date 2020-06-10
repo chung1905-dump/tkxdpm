@@ -18,4 +18,8 @@ public class MainController implements IController {
     public void moveToTransportation() {
         Application.runController(new TransportationInfoController(), 1);
     }
+    
+    public void moveToHome() {
+        Application.runController(new MainController(), 1);
+    }
 }

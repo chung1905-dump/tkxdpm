@@ -4,6 +4,8 @@ import java.sql.*;
 
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
+import QuanLyPhuongThucVanChuyen.setup.PTVCFixture;
+import QuanLyPhuongThucVanChuyen.setup.PTVCSchema;
 import util.DatabaseConfig;
 
 public class Schema {
@@ -43,6 +45,8 @@ public class Schema {
         return new ISetup[]{
                 new MHKDSchema(),
                 new MHKDFixture(),
+                new PTVCSchema(),
+                new PTVCFixture()
                 // @todo: Insert more setup classes here
         };
     }

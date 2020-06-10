@@ -27,12 +27,24 @@ public class Application {
         f.setContentPane(view.draw());
         f.revalidate();
 
-        if (animation != 0) {
+        if (animation == 1) {
             Container c = f.getContentPane();
             c.setLocation(c.getWidth(), 0);
             new Timer(1, e -> {
                 c.setLocation(c.getX() - 1, 0);
                 if (c.getX() <= 0) {
+                    ((Timer) e.getSource()).stop();
+                }
+            }).start();
+        }
+        
+        if (animation == 2) {
+            Container c = f.getContentPane();
+            c.setLocation(0, 0);
+            int tmp = c.getWidth();
+            new Timer(1, e -> {
+                c.setLocation(c.getX() + 1, 0);
+                if (c.getX() >= tmp) {
                     ((Timer) e.getSource()).stop();
                 }
             }).start();
