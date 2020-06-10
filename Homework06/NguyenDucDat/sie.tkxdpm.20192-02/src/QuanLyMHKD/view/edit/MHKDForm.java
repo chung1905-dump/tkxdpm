@@ -11,8 +11,8 @@ import java.awt.*;
 import java.util.HashMap;
 
 public class MHKDForm implements IView {
-    private MHKDEditController controller;
-    private HashMap<String, Component> componentMap = new HashMap<String, Component>();
+    private final MHKDEditController controller;
+    private HashMap<String, Component> componentMap = new HashMap<>();
 
     public MHKDForm(MHKDEditController controller) {
         this.controller = controller;
@@ -22,8 +22,8 @@ public class MHKDForm implements IView {
         Container form = new Container();
         form.setLayout(new SpringLayout());
 
-        String[] labels = {"Ten: ", "Merchandise: ", "Quantity: ", "Unit: "};
-        String[] keys = {"name", "merchandise", "qty: ", "unit"};
+        String[] labels = {"Name: ", "Merchandise: ", "Quantity: ", "Unit: "};
+        String[] keys = {"name", "merchandise", "qty", "unit"};
         int numPairs = labels.length;
 
         for (int i = 0; i < labels.length; i++) {
@@ -35,7 +35,8 @@ public class MHKDForm implements IView {
         }
 
         JButton saveBtn = new JButton("Save");
-        saveBtn.addActionListener(e -> this.controller.save());
+        saveBtn.addActionListener(e -> this.controller.save(prepareEntity()));
+        form.add(saveBtn);
 
         SpringUtilities.makeCompactGrid(form,
                 numPairs, 2,
@@ -44,12 +45,12 @@ public class MHKDForm implements IView {
         return form;
     }
 
-    private MatHangKinhDoanh prepareEntity(Container form) {
+    private MatHangKinhDoanh prepareEntity() {
         MatHangKinhDoanh mhkd = new MatHangKinhDoanh();
 
         String name = ((JTextComponent) getComponentByName("name")).getText();
         String merchandise = ((JTextComponent) getComponentByName("merchandise")).getText();
-        float qty = Float.parseFloat(((JTextComponent) getComponentByName("name")).getText());
+        float qty = Float.parseFloat(((JTextComponent) getComponentByName("qty")).getText());
         String unit = ((JTextComponent) getComponentByName("unit")).getText();
 
         mhkd.setName(name).setMerchandise(merchandise).setQty(qty).setUnit(unit);

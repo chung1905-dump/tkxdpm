@@ -1,8 +1,10 @@
 package QuanLyMHKD.model;
 
+import QuanLyMHKD.entity.MatHangKinhDoanh;
 import util.DatabaseExecutor;
 
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class MHKD {
     DatabaseExecutor databaseExecutor;
@@ -11,6 +13,10 @@ public class MHKD {
         databaseExecutor = new DatabaseExecutor();
     }
 
+    /**
+     * @return String[][]
+     * @TODO: Use entity instead of String[] to represent data
+     */
     public String[][] loadAll() {
         ResultSet result = null;
 
@@ -20,7 +26,7 @@ public class MHKD {
             while (result.next()) {
                 String[] row = new String[5];
                 row[0] = String.valueOf(result.getInt("id"));
-                row[1] = result.getString("ten");
+                row[1] = result.getString("name");
                 row[2] = result.getString("merchandise");
                 row[3] = String.valueOf(result.getInt("quantity"));
                 row[4] = result.getString("unit");
@@ -60,5 +66,27 @@ public class MHKD {
             }
         }
         return 0;
+    }
+
+    public void save(MatHangKinhDoanh entity) throws SQLException {
+        if (isNew(entity)) {
+            create(entity);
+        }
+    }
+
+    private void create(MatHangKinhDoanh entity) throws SQLException {
+        String sql = String.format(
+                "INSERT INTO mat_hang_kinh_doanh (name, merchandise, quantity, unit) " +
+                        "VALUES ('%s', '%s', %.2f, '%s');",
+                entity.getName(),
+                entity.getMerchandise(),
+                entity.getQty(),
+                entity.getUnit()
+        );
+        databaseExecutor.executeUpdate(sql);
+    }
+
+    private boolean isNew(MatHangKinhDoanh entity) {
+        return entity.getId() == 0;
     }
 }

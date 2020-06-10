@@ -11,6 +11,6 @@ public class MHKDListController implements IController {
     }
 
     public void moveToNewController() {
-        Application.runController(new MHKDEditController(), 1);
+        Application.runController(new MHKDEditController(null), 1);
     }
 }
