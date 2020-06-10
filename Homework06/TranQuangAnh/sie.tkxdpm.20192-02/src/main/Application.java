@@ -1,6 +1,6 @@
 package main;
 
-import QuanLyMHKD.controller.MHKDController;
+import core.MainController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -40,7 +40,6 @@ public class Application {
     }
 
     private static IController getFirstController() {
-        // @todo: Should return LoginController
-        return new MHKDController();
+        return new MainController();
     }
 }
