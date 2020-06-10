@@ -8,6 +8,10 @@ import java.awt.*;
 public class Application {
     private static JFrame f;
 
+    public final static int ANIM_NONE = 0;
+    public final static int ANIM_SWIPE_LEFT = 1;
+    public final static int ANIM_SWIPE_RIGHT = 2;
+
     public static void main(String[] args) {
         f = new JFrame();
         f.setSize(800, 500);
@@ -19,7 +23,7 @@ public class Application {
     }
 
     public static void runController(IController controller) {
-        runController(controller, 0);
+        runController(controller, ANIM_NONE);
     }
 
     public static void runController(IController controller, int animation) {
@@ -27,12 +31,27 @@ public class Application {
         f.setContentPane(view.draw());
         f.revalidate();
 
-        if (animation != 0) {
+        if (animation != ANIM_NONE) {
             Container c = f.getContentPane();
-            c.setLocation(c.getWidth(), 0);
+            int x_velocity;
+            Point initLocation;
+            switch (animation) {
+                case ANIM_SWIPE_LEFT:
+                    initLocation = new Point(c.getWidth(), 0);
+                    x_velocity = -10;
+                    break;
+                case ANIM_SWIPE_RIGHT:
+                    initLocation = new Point(-c.getWidth(), 0);
+                    x_velocity = 10;
+                    break;
+                default:
+                    // Not supported animation
+                    return;
+            }
+            c.setLocation(initLocation);
             new Timer(1, e -> {
-                c.setLocation(c.getX() - 10, 0);
-                if (c.getX() <= 0) {
+                c.setLocation(c.getX() + x_velocity, 0);
+                if (c.getX() * x_velocity >= 0) {
                     c.setLocation(0, 0);
                     ((Timer) e.getSource()).stop();
                 }

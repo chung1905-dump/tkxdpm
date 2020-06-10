@@ -12,10 +12,10 @@ public class MainController implements IController {
     }
 
     public void moveToMHKD() {
-        Application.runController(new MHKDListController(), 1);
+        Application.runController(new MHKDListController(), Application.ANIM_SWIPE_LEFT);
     }
 
     public void moveToTransportation() {
-        Application.runController(new TransportationInfoController(), 1);
+        Application.runController(new TransportationInfoController(), Application.ANIM_SWIPE_LEFT);
     }
 }

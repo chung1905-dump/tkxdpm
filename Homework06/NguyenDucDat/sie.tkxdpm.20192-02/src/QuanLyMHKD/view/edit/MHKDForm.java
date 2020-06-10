@@ -34,12 +34,16 @@ public class MHKDForm implements IView {
             this.addComponentByName(form, textField, keys[i]);
         }
 
+        JButton backBtn = new JButton("Back");
+        backBtn.addActionListener(e -> this.controller.back());
+        form.add(backBtn);
+
         JButton saveBtn = new JButton("Save");
         saveBtn.addActionListener(e -> this.controller.save(prepareEntity()));
         form.add(saveBtn);
 
         SpringUtilities.makeCompactGrid(form,
-                numPairs, 2,
+                numPairs + 1, 2,
                 6, 6,
                 6, 6);
         return form;
