@@ -14,7 +14,11 @@ public class MHKDEditController implements IController {
 
     public MHKDEditController(MHKD model) {
         if (model == null) {
-            model = new MHKD();
+            try {
+                model = new MHKD();
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
         }
         this.model = model;
     }

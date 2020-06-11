@@ -1,9 +1,11 @@
 package main;
 
 import core.MainController;
+import util.DatabaseExecutor;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 
 public class Application {
     private static JFrame f;
@@ -12,7 +14,8 @@ public class Application {
     public final static int ANIM_SWIPE_LEFT = 1;
     public final static int ANIM_SWIPE_RIGHT = 2;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws SQLException {
+        loading();
         f = new JFrame();
         f.setSize(800, 500);
         f.setLayout(null);
@@ -57,6 +60,10 @@ public class Application {
                 }
             }).start();
         }
+    }
+
+    private static void loading() throws SQLException {
+        DatabaseExecutor.getInstance();
     }
 
     private static IController getFirstController() {

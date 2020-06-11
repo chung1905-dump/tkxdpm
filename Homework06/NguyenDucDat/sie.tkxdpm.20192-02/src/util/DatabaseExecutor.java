@@ -3,21 +3,29 @@ package util;
 import java.sql.*;
 
 public class DatabaseExecutor {
-    private final DatabaseConfig config;
+    private final Connection connection;
 
-    public DatabaseExecutor() {
-        this.config = DatabaseConfig.getInstance();
+    private static DatabaseExecutor instance;
+
+    private DatabaseExecutor() throws SQLException {
+        DatabaseConfig config = DatabaseConfig.getInstance();
+        connection = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
+    }
+
+    public static DatabaseExecutor getInstance() throws SQLException {
+        if (instance == null) {
+            instance = new DatabaseExecutor();
+        }
+        return instance;
     }
 
     public ResultSet executeQuery(String rawSQL) throws SQLException {
-        Connection conn = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
-        Statement stmt = conn.createStatement();
+        Statement stmt = connection.createStatement();
         return stmt.executeQuery(rawSQL);
     }
 
     public int executeUpdate(String rawSQL) throws SQLException {
-        Connection conn = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
-        Statement stmt = conn.createStatement();
+        Statement stmt = connection.createStatement();
         return stmt.executeUpdate(rawSQL);
     }
 }

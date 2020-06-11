@@ -9,8 +9,8 @@ import java.sql.SQLException;
 public class MHKD {
     DatabaseExecutor databaseExecutor;
 
-    public MHKD() {
-        databaseExecutor = new DatabaseExecutor();
+    public MHKD() throws SQLException {
+        databaseExecutor = DatabaseExecutor.getInstance();
     }
 
     /**
