@@ -1,5 +1,7 @@
 package QuanLyPhuongThucVanChuyen;
 
+import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
+
 public class TransportationInfoList {
 	TransportationInfo[] data;
 

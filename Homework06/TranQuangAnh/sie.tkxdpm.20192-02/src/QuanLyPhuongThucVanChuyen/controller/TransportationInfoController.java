@@ -6,20 +6,14 @@ import JDBC.DBUtilities;
 import QuanLyPhuongThucVanChuyen.view.TransportationInfoGUI;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
 import QuanLyPhuongThucVanChuyen.view.TransportationWindow;
-import core.MainController;
-import main.Application;
 import main.IController;
 import main.IView;
 
 public class TransportationInfoController implements IController {
     @Override
     public IView run() {
-    	//TransportationInfoController controller = new TransportationInfoController();
-        return new TransportationWindow(this);
-    }
-    
-    public void moveToHome() {
-        Application.runController(new MainController(), 1);
+    	TransportationInfoController controller = new TransportationInfoController();
+        return new TransportationWindow(TransportationInfoController.this);
     }
     
 	public TransportationInfoModel loadRecords() throws SQLException {
@@ -38,14 +32,13 @@ public class TransportationInfoController implements IController {
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 	
-	public void updateRecord(String siteCode, String siteName, String byShip, String byAir, String others,String id) {
+	public void updateRecord(String siteCode, String siteName, String byShip, String byAir, String others) {
 		String sql_stmt = "UPDATE transportationinfo SET SiteName = '" + siteName + "'";
 		// sql_stmt += ",gender = '" + cboGender.getSelectedItem().toString() + "'";
-		sql_stmt += ",SiteCode = '" + siteCode + "'";
 		sql_stmt += ",byShip = '" + byShip + "'";
 		sql_stmt += ",byAir = '" + byAir + "'";
 		sql_stmt += ",others = '" + others + "'";
-		sql_stmt += " WHERE id = '" + id + "'";
+		sql_stmt += " WHERE SiteCode = '" + siteCode + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}

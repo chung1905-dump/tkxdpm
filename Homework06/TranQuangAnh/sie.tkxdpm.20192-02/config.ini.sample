@@ -1,3 +1,3 @@
-db_url=jdbc:mysql://127.0.0.1:3306/tkxdpm
-db_username=tkxdpm
-db_password=tkxdpm
+db_url=jdbc:mysql://127.0.0.1:3306/tkxdpm?autoReconnect=true&useSSL=false
+db_username=root
+db_password=toor
