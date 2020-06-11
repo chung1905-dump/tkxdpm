@@ -2,6 +2,7 @@ package QuanLyPhuongThucVanChuyen.view;
 
 import JDBC.DBUtilities;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
+import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
 import main.IView;
 
@@ -56,8 +57,9 @@ public class TransportationWindow extends Container implements IView {
 	}
 
 	private void deleteRecord() {
-		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + txtID.getText() + "'";
-		DBUtilities.ExecuteSQLStatement(sql_stmt);
+		controller.deleteRecord(txtID.getText());
+//		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + txtID.getText() + "'";
+//		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 
 	private void loadRecords() throws SQLException {
@@ -289,15 +291,17 @@ public class TransportationWindow extends Container implements IView {
 					addRecord ? "Confirm Add Record" : "Confirm Update Record?", JOptionPane.YES_NO_OPTION);
 
 			if (dialogResult == JOptionPane.YES_OPTION) {
-
+				TransportationInfo data = new TransportationInfo(siteCode, siteName,Integer.parseInt(byShip) , Integer.parseInt(byAir), others);
 				try {
 					if (addRecord) {
 						// addNew();
 						// txtSiteCode.setd
-						controller.addNew(siteCode, siteName, byShip, byAir, others);
+						
+						controller.addNew(data);
 						clearInputBoxes();
 					} else {
-						controller.updateRecord(siteCode, siteName, byShip, byAir, others, id);
+						
+						controller.updateRecord(data,id);
 						// updateRecord();
 					}
 
