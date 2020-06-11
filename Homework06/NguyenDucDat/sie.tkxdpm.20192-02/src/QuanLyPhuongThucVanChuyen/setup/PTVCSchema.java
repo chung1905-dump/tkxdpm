@@ -9,7 +9,8 @@ public class PTVCSchema implements ISetup {
                 " byShip int NOT NULL DEFAULT '0', " +
                 " byAir int NOT NULL DEFAULT '0', " +
                 " others varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL DEFAULT 'No other infos'," +
-                " PRIMARY KEY ( SiteCode ))";
+                "id int NOT NULL AUTO_INCREMENT,"+
+                "PRIMARY KEY (id))";
     }
 //    CREATE TABLE IF NOT EXISTS `mat_hang_kinh_doanh` (
 //    		  `id` int NOT NULL AUTO_INCREMENT,
