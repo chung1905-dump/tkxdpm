@@ -1,8 +1,6 @@
 package JDBC;
 
-import java.io.InputStream;
 import java.sql.*;
-import java.util.Properties;
 
 import util.DatabaseConfig;
 
@@ -21,25 +19,7 @@ public class DBUtilities {
         {
             try
             {
-               // InputStream inputStream = DBUtilities.class.getClassLoader().getResourceAsStream("db.properties");
-//                InputStream inputStream = DBUtilities.class.getClassLoader().getResourceAsStream("config.ini");
-//
-//                Properties properties = new Properties();
-//
-//                properties.load(inputStream);
-//                //Connection dbConnection = null;
-////                dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tkxdpm?autoReconnect=true&useSSL=false",
-////    					"test", "123456");
-//                
-//                String dbDriver = properties.getProperty("dbDriver");
-//                String connectionUrl = properties.getProperty("connectionUrl");
-//                String userName = properties.getProperty("userName");
-//                String password = properties.getProperty("password");
-////
-//                Class.forName(dbDriver).newInstance();
-//                dbConnection = DriverManager.getConnection(connectionUrl, userName, password);
-                
-                DatabaseConfig config = new DatabaseConfig();
+                DatabaseConfig config = DatabaseConfig.getInstance();
                 dbConnection = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
             }
             catch (Exception e)
