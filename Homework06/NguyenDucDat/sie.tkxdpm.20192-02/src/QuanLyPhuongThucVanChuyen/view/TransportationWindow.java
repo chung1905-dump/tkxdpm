@@ -1,16 +1,11 @@
 package QuanLyPhuongThucVanChuyen.view;
 
 import JDBC.DBUtilities;
-//import Main.EmployeesWindow;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
-import QuanLyPhuongThucVanChuyen.model.ResultSetTableModel;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
-import javafx.scene.control.Alert;
 import main.IView;
 
 import java.awt.*;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
 import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
