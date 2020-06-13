@@ -4,12 +4,14 @@ import java.sql.*;
 
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
+import QuanLyPhuongThucVanChuyen.setup.PTVCFixture;
+import QuanLyPhuongThucVanChuyen.setup.PTVCSchema;
 import util.DatabaseConfig;
 
 public class Schema {
     public void run() {
         Connection conn = null;
-        DatabaseConfig config = new DatabaseConfig();
+        DatabaseConfig config = DatabaseConfig.getInstance();
         try {
             conn = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
             System.out.println("Connected to database");
@@ -43,6 +45,8 @@ public class Schema {
         return new ISetup[]{
                 new MHKDSchema(),
                 new MHKDFixture(),
+                new PTVCSchema(),
+                new PTVCFixture()
                 // @todo: Insert more setup classes here
         };
     }

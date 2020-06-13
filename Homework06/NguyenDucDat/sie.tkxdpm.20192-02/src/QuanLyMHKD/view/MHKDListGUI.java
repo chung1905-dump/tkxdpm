@@ -22,7 +22,10 @@ public class MHKDListGUI implements IView {
 
         rootContainer.add((new MHKDListToolbar(this.controller).draw()), BorderLayout.PAGE_START);
         rootContainer.add((new MHKDTable()).draw(), BorderLayout.CENTER);
-        rootContainer.add(new JButton("Back"), BorderLayout.PAGE_END);
+
+        JButton backBtn = new JButton("Back");
+        backBtn.addActionListener(e -> this.controller.back());
+        rootContainer.add(backBtn, BorderLayout.PAGE_END);
 
         return rootContainer;
     }
