@@ -30,6 +30,7 @@ public class MHKDEditController implements IController {
     public void save(MatHangKinhDoanh mhkd) {
         try {
             this.model.save(mhkd);
+            this.back();
         } catch (SQLException e) {
             e.printStackTrace();
         }
