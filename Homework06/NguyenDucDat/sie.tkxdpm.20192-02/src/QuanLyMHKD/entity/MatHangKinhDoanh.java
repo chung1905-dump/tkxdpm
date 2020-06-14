@@ -7,6 +7,14 @@ public class MatHangKinhDoanh {
     private float qty;
     private String unit;
 
+    public MatHangKinhDoanh(int id) {
+        this.id = id;
+    }
+
+    public MatHangKinhDoanh() {
+
+    }
+
     public int getId() {
         return id;
     }

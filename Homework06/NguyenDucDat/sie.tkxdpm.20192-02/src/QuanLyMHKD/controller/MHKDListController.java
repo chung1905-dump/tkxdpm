@@ -15,6 +15,10 @@ public class MHKDListController implements IController {
         Application.runController(new MHKDEditController(null), Application.ANIM_SWIPE_LEFT);
     }
 
+    public void editController(int id) {
+        Application.runController(new MHKDEditController(null, id), Application.ANIM_SWIPE_LEFT);
+    }
+
     public void back() {
         Application.runController(new MainController(), Application.ANIM_SWIPE_RIGHT);
     }

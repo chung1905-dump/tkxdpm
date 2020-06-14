@@ -19,6 +19,10 @@ public class DatabaseExecutor {
         return instance;
     }
 
+    public PreparedStatement createPreparedStatement(String rawSQL) throws SQLException {
+        return connection.prepareStatement(rawSQL);
+    }
+
     public ResultSet executeQuery(String rawSQL) throws SQLException {
         Statement stmt = connection.createStatement();
         return stmt.executeQuery(rawSQL);
