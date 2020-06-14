@@ -12,6 +12,13 @@ import java.sql.SQLException;
 public class MHKDEditController implements IController {
     private final MHKD model;
 
+    private MatHangKinhDoanh entity;
+
+    public MHKDEditController(MHKD model, int entityId) {
+        this(model);
+        entity = this.model.find(entityId);
+    }
+
     public MHKDEditController(MHKD model) {
         if (model == null) {
             try {
