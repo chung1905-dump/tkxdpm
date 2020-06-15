@@ -1,5 +1,6 @@
 package core;
 
+import QLDSMHCanDat.controller.DSMHCanDatController;
 import QuanLyMHKD.controller.MHKDListController;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
 import main.IController;
@@ -17,5 +18,9 @@ public class MainController implements IController {
 
     public void moveToTransportation() {
         Application.runController(new TransportationInfoController(), 1);
+        
+    }
+    public void moveToListProduct() {
+    	Application.runController(new DSMHCanDatController());
     }
 }

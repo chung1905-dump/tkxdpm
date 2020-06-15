@@ -2,6 +2,8 @@ package setup.database;
 
 import java.sql.*;
 
+import QLDSMHCanDat.setup.QLDSDHFixture;
+import QLDSMHCanDat.setup.QLDSDHSchema;
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
 import util.DatabaseConfig;
@@ -43,6 +45,8 @@ public class Schema {
         return new ISetup[]{
                 new MHKDSchema(),
                 new MHKDFixture(),
+                new QLDSDHSchema(),
+                new QLDSDHFixture()
                 // @todo: Insert more setup classes here
         };
     }

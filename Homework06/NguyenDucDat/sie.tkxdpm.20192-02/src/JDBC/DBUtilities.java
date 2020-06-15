@@ -26,7 +26,7 @@ public class DBUtilities {
                 //properties.load(inputStream);
                 //Connection dbConnection = null;
                 dbConnection = DriverManager.getConnection("jdbc:mysql://localhost:3306/tkxdpm?autoReconnect=true&useSSL=false",
-    					"test", "123456");
+    					"root", "luongbeat");
                 
 //                String dbDriver = properties.getProperty("dbDriver");
 //                String connectionUrl = properties.getProperty("connectionUrl");
