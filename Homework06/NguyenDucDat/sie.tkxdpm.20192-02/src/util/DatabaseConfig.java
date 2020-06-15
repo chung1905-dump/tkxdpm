@@ -3,9 +3,22 @@ package util;
 import java.util.Properties;
 
 public class DatabaseConfig {
-    final String configFile = "config.ini";
+    private static DatabaseConfig instance;
+
+    private final String configFile = "config.ini";
 
     private Properties properties = null;
+
+    private DatabaseConfig() {
+    }
+
+    public static DatabaseConfig getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConfig();
+        }
+
+        return new DatabaseConfig();
+    }
 
     private Properties getProperties() {
         if (properties == null) {
