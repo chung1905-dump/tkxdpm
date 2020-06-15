@@ -116,13 +116,13 @@ public class MHKD {
         MatHangKinhDoanh entity = new MatHangKinhDoanh(resultSet.getInt("id"));
         return entity.setName(resultSet.getString("name"))
                 .setMerchandise(resultSet.getString("merchandise"))
-                .setQty(resultSet.getFloat("quantity"))
+                .setQty(resultSet.getFloat("qty"))
                 .setUnit(resultSet.getString("unit"));
     }
 
     private void create(MatHangKinhDoanh entity) throws SQLException {
         String sql = String.format(
-                "INSERT INTO mat_hang_kinh_doanh (name, merchandise, quantity, unit) " +
+                "INSERT INTO mat_hang_kinh_doanh (name, merchandise, qty, unit) " +
                         "VALUES ('%s', '%s', %.2f, '%s');",
                 entity.getName(),
                 entity.getMerchandise(),
@@ -135,7 +135,7 @@ public class MHKD {
     private void update(MatHangKinhDoanh entity) throws SQLException {
         String sql = String.format(
                 "UPDATE mat_hang_kinh_doanh " +
-                        "SET name = '%s', merchandise = '%s', quantity = %.2f, unit = '%s' " +
+                        "SET name = '%s', merchandise = '%s', qty = %.2f, unit = '%s' " +
                         "WHERE id = %d",
                 entity.getName(),
                 entity.getMerchandise(),
