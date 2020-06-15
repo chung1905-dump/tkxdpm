@@ -5,6 +5,7 @@ import util.DatabaseExecutor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -31,32 +32,33 @@ public class MHKD {
                 try {
                     result.close();
                 } catch (Exception e) {
-                    System.out.println("Cannot close count stmt");
+                    System.out.println("Cannot close stmt");
                 }
             }
         }
         return null;
     }
 
-    /**
-     * @return String[][]
-     * @TODO: Use entity instead of String[] to represent data
-     */
-    public String[][] loadAll() {
+    public boolean delete(int id) {
+        boolean result = false;
+        try {
+            PreparedStatement stmt = databaseExecutor.createPreparedStatement("DELETE FROM mat_hang_kinh_doanh WHERE id = ?");
+            stmt.setInt(1, id);
+            result = stmt.execute();
+            stmt.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return result;
+    }
+
+    public MatHangKinhDoanh[] loadAll() {
         ResultSet result = null;
 
         try {
-            String[][] ret = new String[count()][];
             result = databaseExecutor.executeQuery("SELECT * FROM mat_hang_kinh_doanh");
-            while (result.next()) {
-                String[] row = new String[5];
-                row[0] = String.valueOf(result.getInt("id"));
-                row[1] = result.getString("name");
-                row[2] = result.getString("merchandise");
-                row[3] = String.valueOf(result.getFloat("quantity"));
-                row[4] = result.getString("unit");
-                ret[result.getRow() - 1] = (row);
-            }
+
+            MatHangKinhDoanh[] ret = prepareEntity(result);
             result.close();
             return ret;
         } catch (Exception e) {
