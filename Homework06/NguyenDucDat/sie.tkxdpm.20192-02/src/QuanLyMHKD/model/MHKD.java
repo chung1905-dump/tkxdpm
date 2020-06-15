@@ -22,11 +22,8 @@ public class MHKD {
             PreparedStatement stmt = databaseExecutor.createPreparedStatement("SELECT * FROM mat_hang_kinh_doanh WHERE id = ?");
             stmt.setInt(1, id);
             result = stmt.executeQuery();
-            while (result.next()) {
-                System.out.println(result.getString("name"));
-                MatHangKinhDoanh[] list = prepareEntity(result);
-            }
-            return null;
+            MatHangKinhDoanh[] list = prepareEntity(result);
+            return list[0];
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
@@ -99,21 +96,26 @@ public class MHKD {
     public void save(MatHangKinhDoanh entity) throws SQLException {
         if (isNew(entity)) {
             create(entity);
+        } else {
+            update(entity);
         }
     }
 
     private MatHangKinhDoanh[] prepareEntity(ResultSet resultSet) throws SQLException {
         List<MatHangKinhDoanh> list = new ArrayList<>();
         while (resultSet.next()) {
-            MatHangKinhDoanh entity = new MatHangKinhDoanh(resultSet.getInt("id"));
-            entity.setName(resultSet.getString("name"))
-                    .setMerchandise(resultSet.getString("merchandise"))
-                    .setQty(resultSet.getFloat("quantity"))
-                    .setUnit(resultSet.getString("unit"));
-            list.add(entity);
+            list.add(resultSet2Entity(resultSet));
         }
         MatHangKinhDoanh[] array = new MatHangKinhDoanh[list.size()];
         return list.toArray(array);
+    }
+
+    private MatHangKinhDoanh resultSet2Entity(ResultSet resultSet) throws SQLException {
+        MatHangKinhDoanh entity = new MatHangKinhDoanh(resultSet.getInt("id"));
+        return entity.setName(resultSet.getString("name"))
+                .setMerchandise(resultSet.getString("merchandise"))
+                .setQty(resultSet.getFloat("quantity"))
+                .setUnit(resultSet.getString("unit"));
     }
 
     private void create(MatHangKinhDoanh entity) throws SQLException {
@@ -124,6 +126,20 @@ public class MHKD {
                 entity.getMerchandise(),
                 entity.getQty(),
                 entity.getUnit()
+        );
+        databaseExecutor.executeUpdate(sql);
+    }
+
+    private void update(MatHangKinhDoanh entity) throws SQLException {
+        String sql = String.format(
+                "UPDATE mat_hang_kinh_doanh " +
+                        "SET name = '%s', merchandise = '%s', quantity = %.2f, unit = '%s' " +
+                        "WHERE id = %d",
+                entity.getName(),
+                entity.getMerchandise(),
+                entity.getQty(),
+                entity.getUnit(),
+                entity.getId()
         );
         databaseExecutor.executeUpdate(sql);
     }

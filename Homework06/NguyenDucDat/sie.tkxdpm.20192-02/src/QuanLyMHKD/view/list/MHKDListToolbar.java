@@ -20,6 +20,7 @@ public class MHKDListToolbar implements IView {
 
         addButton(toolbar, "Create", e -> parent.getController().moveToNewController());
         addButton(toolbar, "Edit", e -> parent.getController().editController(parent.getTable().getSelectedId()));
+        addButton(toolbar, "Delete", e -> parent.getController().editController(parent.getTable().getSelectedId()));
 
         return toolbar;
     }

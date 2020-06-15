@@ -19,6 +19,14 @@ public class MatHangKinhDoanh {
         return id;
     }
 
+    public MatHangKinhDoanh setId(int id) throws Exception {
+        if (this.id > 0) {
+            throw new Exception("Can not change ID of entity");
+        }
+        this.id = id;
+        return this;
+    }
+
     public String getName() {
         return name;
     }

@@ -31,7 +31,7 @@ public class MHKDEditController implements IController {
     }
 
     public IView run() {
-        return new MHKDEditGUI(this);
+        return new MHKDEditGUI(this, entity);
     }
 
     public void save(MatHangKinhDoanh mhkd) {
