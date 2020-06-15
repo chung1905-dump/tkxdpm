@@ -1,19 +1,15 @@
 package QuanLyPhuongThucVanChuyen.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import javax.swing.table.TableModel;
-
-import JDBC.DBUtilities;
-import QuanLyPhuongThucVanChuyen.view.TransportationInfoGUI;
+import util.DBUtilities;
 import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
 import QuanLyPhuongThucVanChuyen.view.TransportationWindow;
-import core.MainController;
+import main.controller.MainController;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 public class TransportationInfoController implements IController {
 	@Override

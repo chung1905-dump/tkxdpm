@@ -1,6 +1,6 @@
 package QuanLyPhuongThucVanChuyen.model;
 
-import JDBC.DBUtilities;
+import util.DBUtilities;
 import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
 
 import java.sql.*;

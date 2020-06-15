@@ -1,8 +1,6 @@
-package JDBC;
+package util;
 
 import java.sql.*;
-
-import util.DatabaseConfig;
 
 public class DBUtilities {
 

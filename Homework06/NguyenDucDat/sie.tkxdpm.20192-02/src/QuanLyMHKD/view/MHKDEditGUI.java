@@ -2,7 +2,7 @@ package QuanLyMHKD.view;
 
 import QuanLyMHKD.controller.MHKDEditController;
 import QuanLyMHKD.view.edit.MHKDForm;
-import main.IView;
+import main.view.IView;
 
 import java.awt.*;
 

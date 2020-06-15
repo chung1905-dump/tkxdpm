@@ -1,6 +1,8 @@
 package main;
 
-import core.MainController;
+import main.controller.IController;
+import main.controller.MainController;
+import main.view.IView;
 import util.DatabaseExecutor;
 
 import javax.swing.*;

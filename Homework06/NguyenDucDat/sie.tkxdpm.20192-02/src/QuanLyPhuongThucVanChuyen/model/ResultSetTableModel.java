@@ -1,6 +1,6 @@
 package QuanLyPhuongThucVanChuyen.model;
 
-import JDBC.DBUtilities;
+import util.DBUtilities;
 
 import java.sql.*;
 import javax.swing.table.AbstractTableModel;

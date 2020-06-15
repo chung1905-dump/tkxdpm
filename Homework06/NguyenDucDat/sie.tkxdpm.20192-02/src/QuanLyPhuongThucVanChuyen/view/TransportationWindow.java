@@ -1,10 +1,10 @@
 package QuanLyPhuongThucVanChuyen.view;
 
-import JDBC.DBUtilities;
+import util.DBUtilities;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
 import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
-import main.IView;
+import main.view.IView;
 
 import java.awt.*;
 import java.sql.SQLException;

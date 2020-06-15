@@ -1,14 +1,10 @@
 package QLDSMHCanDat.view;
 
-import JDBC.DBUtilities;
-import QLDSMHCanDat.*;
 import QLDSMHCanDat.controller.DSMHCanDatController;
 import QLDSMHCanDat.model.QLDSMHCanDatModel;
-import main.IView;
+import main.view.IView;
 
 import java.awt.*;
-import java.awt.event.ContainerEvent;
-import java.awt.event.ContainerListener;
 import java.sql.SQLException;
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;

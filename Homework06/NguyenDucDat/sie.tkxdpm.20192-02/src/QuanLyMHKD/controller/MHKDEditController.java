@@ -4,8 +4,8 @@ import QuanLyMHKD.entity.MatHangKinhDoanh;
 import QuanLyMHKD.model.MHKD;
 import QuanLyMHKD.view.MHKDEditGUI;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 import java.sql.SQLException;
 

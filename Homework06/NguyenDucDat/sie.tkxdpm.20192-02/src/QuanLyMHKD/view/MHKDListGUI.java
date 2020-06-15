@@ -3,7 +3,7 @@ package QuanLyMHKD.view;
 import QuanLyMHKD.controller.MHKDListController;
 import QuanLyMHKD.view.list.MHKDListToolbar;
 import QuanLyMHKD.view.list.MHKDTable;
-import main.IView;
+import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;

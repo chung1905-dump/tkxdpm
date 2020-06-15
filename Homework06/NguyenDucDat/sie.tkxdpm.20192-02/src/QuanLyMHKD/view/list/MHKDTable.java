@@ -1,7 +1,7 @@
 package QuanLyMHKD.view.list;
 
 import QuanLyMHKD.model.MHKD;
-import main.IView;
+import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;

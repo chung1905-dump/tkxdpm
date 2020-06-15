@@ -1,6 +1,7 @@
-package core;
+package main.view;
 
-import main.IView;
+import main.controller.MainController;
+import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;

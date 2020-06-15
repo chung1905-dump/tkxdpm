@@ -2,8 +2,8 @@ package QuanLyMHKD.view.edit;
 
 import QuanLyMHKD.controller.MHKDEditController;
 import QuanLyMHKD.entity.MatHangKinhDoanh;
-import core.layout.SpringUtilities;
-import main.IView;
+import main.layout.SpringUtilities;
+import main.view.IView;
 
 import javax.swing.*;
 import javax.swing.text.JTextComponent;

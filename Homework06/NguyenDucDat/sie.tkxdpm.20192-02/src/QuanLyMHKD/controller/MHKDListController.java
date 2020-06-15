@@ -1,10 +1,10 @@
 package QuanLyMHKD.controller;
 
 import QuanLyMHKD.view.MHKDListGUI;
-import core.MainController;
+import main.controller.MainController;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 public class MHKDListController implements IController {
     public IView run() {

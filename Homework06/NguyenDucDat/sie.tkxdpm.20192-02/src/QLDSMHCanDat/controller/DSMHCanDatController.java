@@ -2,16 +2,12 @@
 package QLDSMHCanDat.controller;
 
 import java.sql.SQLException;
-import java.util.Date;
 
-import JDBC.DBUtilities;
+import util.DBUtilities;
 import QLDSMHCanDat.model.QLDSMHCanDatModel;
 import QLDSMHCanDat.view.QLDSMHCanDatView;
-import QuanLyPhuongThucVanChuyen.view.TransportationInfoGUI;
-import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
-import QuanLyPhuongThucVanChuyen.view.TransportationWindow;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 public class DSMHCanDatController implements IController {
     @Override
