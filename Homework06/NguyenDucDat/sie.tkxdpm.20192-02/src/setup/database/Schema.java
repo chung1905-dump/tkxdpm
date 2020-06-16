@@ -51,12 +51,8 @@ public class Schema {
                 new PTVCSchema(),
                 new PTVCFixture(),
                 new QLMHSchema(),
-                new QLDSDHSchema(),
-                new QLMHSchema(),
-                new QLDSDHSchema(),
-                new PTVCSchema(),
-                new PTVCFixture(),
-                new QLDHSchema()
+                new QLDHSchema(),
+                new QLDSDHSchema()
                 // @todo: Insert more setup classes here
         };
     }

@@ -147,7 +147,7 @@ public class QLDSMHCanDatView extends Container implements IView {
 //			}
 //		});
 
-		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Transportation Records Editor",
+		jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "DSMHCanDat Records Editor",
 				javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION,
 				new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 

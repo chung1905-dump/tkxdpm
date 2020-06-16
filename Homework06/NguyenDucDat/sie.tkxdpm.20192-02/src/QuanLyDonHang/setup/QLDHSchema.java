@@ -5,8 +5,7 @@ public class QLDHSchema implements ISetup {
         return "CREATE TABLE IF NOT EXISTS donHang " +
                 "(maDonHang varchar(20) NOT NULL, " +
                 " ngayNhan DATE NOT NULL," +
-                " maDSMHCD int,"+
-                "PRIMARY KEY (maDonHang)"+
-                "FOREIGN KEY (maDSMHCD) REFERENCES qldsmhcandat (idDSMHCD) ON UPDATE RESTRICT ON DELETE CASCADE)";
+                " status VARCHAR(255),"+
+                " PRIMARY KEY (maDonHang));";
     }
 }

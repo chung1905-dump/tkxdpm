@@ -136,6 +136,6 @@ public class MatHangModel {
     }
 
     private boolean isNew(MatHang entity) {
-        return entity.getId() == null;
+        return entity.isNew();
     }
 }

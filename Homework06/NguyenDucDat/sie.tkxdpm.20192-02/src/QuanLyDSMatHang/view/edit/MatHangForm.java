@@ -33,7 +33,7 @@ public class MatHangForm implements IView {
             form.add(l);
             JTextField textField = new JTextField(10);
             textField.setText(values[i]);
-//            textField.setEditable(i > 0);
+            textField.setEditable(i > 0 || values[0] == null);
             l.setLabelFor(textField);
             this.addComponentByName(form, textField, keys[i]);
         }
@@ -66,15 +66,12 @@ public class MatHangForm implements IView {
     }
 
     private MatHang prepareEntity() {
-        String idStr = ((JTextComponent) getComponentByName("id")).getText();
-        String id;
-        if (idStr.isEmpty()) {
-            id = "";
-        } else {
-            id = idStr;
-        }
+        boolean isNew = ((JTextComponent) getComponentByName("id")).isEditable();
+        String id = ((JTextComponent) getComponentByName("id")).getText();
         String name = ((JTextComponent) getComponentByName("ten")).getText();
-        return new MatHang(id, name);
+        MatHang matHang = new MatHang(id, name);
+        matHang.setNew(isNew);
+        return matHang;
     }
 
     private Component getComponentByName(String name) {
