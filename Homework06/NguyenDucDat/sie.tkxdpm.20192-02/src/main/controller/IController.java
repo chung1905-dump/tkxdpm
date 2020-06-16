@@ -1,6 +1,6 @@
-package main;
+package main.controller;
 
-import java.awt.*;
+import main.view.IView;
 
 public interface IController {
     IView run();

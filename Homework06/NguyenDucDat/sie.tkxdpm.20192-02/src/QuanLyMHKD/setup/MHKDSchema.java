@@ -1,15 +1,15 @@
 package QuanLyMHKD.setup;
 
+import QuanLyMHKD.entity.MatHangKinhDoanh;
+import main.entity.MetaData;
+import main.entity.MetaDataFactory;
 import setup.database.ISetup;
+import setup.database.TableBuilder;
 
 public class MHKDSchema implements ISetup {
     public String getRawSQL() {
-        return "CREATE TABLE IF NOT EXISTS mat_hang_kinh_doanh " +
-                "(id INTEGER NOT NULL AUTO_INCREMENT, " +
-                " name VARCHAR(255), " +
-                " merchandise VARCHAR(255), " +
-                " quantity INTEGER, " +
-                " unit VARCHAR(255), " +
-                " PRIMARY KEY (id));";
+        MetaDataFactory mdf = MetaDataFactory.getInstance();
+        MetaData md = mdf.getMetaData(MatHangKinhDoanh.class);
+        return TableBuilder.buildSQLFromMetaData(md);
     }
 }

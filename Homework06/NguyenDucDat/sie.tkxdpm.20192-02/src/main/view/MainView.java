@@ -1,6 +1,7 @@
-package core;
+package main.view;
 
-import main.IView;
+import main.controller.MainController;
+import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;
@@ -21,9 +22,8 @@ public class MainView implements IView {
         rootContainer.setLayout(layout);
         addBtn("Phuong thuc van chuyen", e -> controller.moveToTransportation());
         addBtn("Mat hang kinh doanh", e -> controller.moveToMHKD());
-//        addBtn("QUIT", e -> System.out.println("QUIT"));
-        addBtn("QUIT", e -> System.exit(1));
-        
+        addBtn("Danh sach mat hang can dat" , e -> controller.moveToListProduct());
+        addBtn("QUIT", e -> System.exit(0));
         return rootContainer;
     }
 

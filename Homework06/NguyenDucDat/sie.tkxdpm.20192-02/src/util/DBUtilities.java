@@ -1,8 +1,6 @@
-package JDBC;
+package util;
 
 import java.sql.*;
-
-import util.DatabaseConfig;
 
 public class DBUtilities {
 
@@ -11,23 +9,15 @@ public class DBUtilities {
 
     public static Connection getConnection()
     {
-        if (dbConnection != null)
-        {
-            return dbConnection;
-        }
-        else
-        {
-            try
-            {
+        if (dbConnection == null) {
+            try {
                 DatabaseConfig config = DatabaseConfig.getInstance();
                 dbConnection = DriverManager.getConnection(config.getUrl(), config.getUsername(), config.getPassword());
-            }
-            catch (Exception e)
-            {
+            } catch (Exception e) {
                 e.printStackTrace();
             }
-            return dbConnection;
         }
+        return dbConnection;
     }
 
     public static void ExecuteSQLStatement(String sql_stmt)

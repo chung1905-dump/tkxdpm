@@ -1,28 +1,51 @@
 package QuanLyMHKD.view.list;
 
-import QuanLyMHKD.controller.MHKDListController;
+import QuanLyMHKD.model.MHKD;
+import QuanLyMHKD.view.MHKDListGUI;
 import main.Application;
-import main.IView;
+import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.ActionListener;
 
 public class MHKDListToolbar implements IView {
-    private final MHKDListController controller;
+    private final MHKDListGUI parent;
 
-    public MHKDListToolbar(MHKDListController controller) {
-        this.controller = controller;
+    public MHKDListToolbar(MHKDListGUI parent) {
+        this.parent = parent;
     }
 
     public Container draw() {
         JToolBar toolbar = new JToolBar();
         toolbar.setFloatable(false);
 
-        JButton button = new JButton("Create");
-        button.addActionListener(e -> this.controller.moveToNewController());
-        toolbar.add(button);
-        toolbar.addSeparator();
+        addButton(toolbar, "Create", e -> parent.getController().moveToNewController());
+        addButton(toolbar, "Edit", e -> parent.getController().editController(parent.getTable().getSelectedId()));
+        addButton(toolbar, "Delete", e -> deleteEntity(parent.getTable().getSelectedId()));
 
         return toolbar;
+    }
+
+    private void addButton(JToolBar toolbar, String label, ActionListener action) {
+        JButton button = new JButton(label);
+        button.addActionListener(action);
+        toolbar.add(button);
+        toolbar.addSeparator();
+    }
+
+    private void deleteEntity(int id) {
+        int cfBtn = JOptionPane.YES_NO_OPTION;
+        int result = JOptionPane.showConfirmDialog(null, "Confirm to delete this record?", "Confirm delete", cfBtn);
+        if (result == JOptionPane.NO_OPTION) {
+            return;
+        }
+        try {
+            MHKD model = new MHKD();
+            model.delete(id);
+            Application.refresh();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

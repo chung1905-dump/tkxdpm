@@ -4,13 +4,20 @@ import QuanLyMHKD.entity.MatHangKinhDoanh;
 import QuanLyMHKD.model.MHKD;
 import QuanLyMHKD.view.MHKDEditGUI;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 import java.sql.SQLException;
 
 public class MHKDEditController implements IController {
     private final MHKD model;
+
+    private MatHangKinhDoanh entity;
+
+    public MHKDEditController(MHKD model, int entityId) {
+        this(model);
+        entity = this.model.find(entityId);
+    }
 
     public MHKDEditController(MHKD model) {
         if (model == null) {
@@ -24,12 +31,13 @@ public class MHKDEditController implements IController {
     }
 
     public IView run() {
-        return new MHKDEditGUI(this);
+        return new MHKDEditGUI(this, entity);
     }
 
     public void save(MatHangKinhDoanh mhkd) {
         try {
             this.model.save(mhkd);
+            this.back();
         } catch (SQLException e) {
             e.printStackTrace();
         }

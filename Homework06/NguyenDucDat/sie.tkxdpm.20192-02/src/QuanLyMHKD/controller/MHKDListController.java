@@ -1,10 +1,10 @@
 package QuanLyMHKD.controller;
 
 import QuanLyMHKD.view.MHKDListGUI;
-import core.MainController;
+import main.controller.MainController;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 public class MHKDListController implements IController {
     public IView run() {
@@ -13,6 +13,10 @@ public class MHKDListController implements IController {
 
     public void moveToNewController() {
         Application.runController(new MHKDEditController(null), Application.ANIM_SWIPE_LEFT);
+    }
+
+    public void editController(int id) {
+        Application.runController(new MHKDEditController(null, id), Application.ANIM_SWIPE_LEFT);
     }
 
     public void back() {

@@ -3,6 +3,8 @@ package util;
 import java.util.Properties;
 
 public class DatabaseConfig {
+    private static DatabaseConfig instance;
+
     private final String configFile = "config.ini";
 
     private Properties properties = null;
@@ -11,6 +13,10 @@ public class DatabaseConfig {
     }
 
     public static DatabaseConfig getInstance() {
+        if (instance == null) {
+            instance = new DatabaseConfig();
+        }
+
         return new DatabaseConfig();
     }
 

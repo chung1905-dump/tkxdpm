@@ -1,4 +1,5 @@
-package QuanLyPhuongThucVanChuyen.model;
+package QLDSMHCanDat.model;
+
 
 import util.DBUtilities;
 import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
@@ -9,7 +10,7 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TransportationInfoModel extends AbstractTableModel {
+public class QLDSMHCanDatModel extends AbstractTableModel {
 	//TransportationInfo[] data;
 	List<TransportationInfo> data = new ArrayList<TransportationInfo>();
 	private Connection connection;
@@ -18,37 +19,37 @@ public class TransportationInfoModel extends AbstractTableModel {
 	private ResultSetMetaData metaData;
 	private int numberOfRows;
 
-	public TransportationInfoModel(String query) throws SQLException {
+	public QLDSMHCanDatModel(String query) throws SQLException {
 		connection = DBUtilities.getConnection();
 		statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		resultSet = statement.executeQuery(query);
 		metaData = resultSet.getMetaData();
-		data = this.getData();
+		//data = this.getData();
 		resultSet.last();
 		numberOfRows = resultSet.getRow();
 		fireTableStructureChanged();
 	}
 	
-	public ArrayList<TransportationInfo> getData() {
-		//TransportationInfo[] list = null;
-		ArrayList<TransportationInfo> list = new ArrayList<TransportationInfo>();
-		try {
-			while (resultSet.next()) {
-				  String siteCode = resultSet.getString("siteCode");
-				  String siteName = resultSet.getString("siteName");
-				  int byShip = resultSet.getInt("byShip");
-				  int byAir = resultSet.getInt("byAir");
-				  String others = resultSet.getString("others");
-				  TransportationInfo e = new TransportationInfo(siteCode,siteName,byShip,byAir,others);
-				  list.add(e);
-				}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-
-		return list;
-	}
+//	public ArrayList<TransportationInfo> getData() {
+//		//TransportationInfo[] list = null;
+//		ArrayList<TransportationInfo> list = new ArrayList<TransportationInfo>();
+//		try {
+//			while (resultSet.next()) {
+//				  String siteCode = resultSet.getString("siteCode");
+//				  String siteName = resultSet.getString("siteName");
+//				  int byShip = resultSet.getInt("byShip");
+//				  int byAir = resultSet.getInt("byAir");
+//				  String others = resultSet.getString("others");
+//				  TransportationInfo e = new TransportationInfo(siteCode,siteName,byShip,byAir,others);
+//				  list.add(e);
+//				}
+//		} catch (SQLException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+//
+//		return list;
+//	}
 
 	@Override
 	public Class getColumnClass(int column) throws IllegalStateException {
@@ -110,3 +111,4 @@ public class TransportationInfoModel extends AbstractTableModel {
 		}
 	}
 }
+

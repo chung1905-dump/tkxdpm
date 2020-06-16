@@ -1,45 +1,50 @@
-package QuanLyPhuongThucVanChuyen.controller;
+package QuanLyDonHang.controller;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
-import util.DBUtilities;
-import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
-import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
-import QuanLyPhuongThucVanChuyen.view.TransportationWindow;
-import main.controller.MainController;
+import javax.swing.table.TableModel;
+
+import JDBC.DBUtilities;
+import QuanLyDonHang.entity.MHCanDat;
+import QuanLyDonHang.entity.DonHang;
+import QuanLyDonHang.view.DonHangView;
+import QuanLyDonHang.model.DonHangModel;
+import QuanLyDSMatHang.MatHang;
+import core.MainController;
 import main.Application;
-import main.controller.IController;
-import main.view.IView;
+import main.IController;
+import main.IView;
 
-public class TransportationInfoController implements IController {
+public class DonHangController implements IController {
 	@Override
 	public IView run() {
 		// TransportationInfoController controller = new TransportationInfoController();
-		return new TransportationWindow(this);
+		return new DonHangView(this);
 	}
 
 	public void moveToHome() {
 		Application.runController(new MainController(), Application.ANIM_SWIPE_LEFT);
 	}
 
-	public TransportationInfoModel loadRecords() throws SQLException {
+	public DonHangModel loadRecords() throws SQLException {
 
 		String sql_stmt = "SELECT * FROM transportationinfo;";
 		System.out.println(sql_stmt);
 		// ResultSetTableModel tableModel = new ResultSetTableModel(sql_stmt);
-		TransportationInfoModel tableModel = new TransportationInfoModel(sql_stmt);
+		DonHangModel tableModel = new DonHangModel(sql_stmt);
 
 		return tableModel;
 	}
 
-	public void deleteRecord(String id) {
-		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + id + "'";
+	public void deleteRecord(String siteCode) {
+		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + siteCode + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 
-	public void updateRecord(TransportationInfo data, String id) {
-		String siteCode = data.getSiteCode();
+	public void updateRecord(DonHang data, String id) {
+		String maDonHang = data.getMaDonHang();
 		String siteName = data.getSiteName();
 		String byShip = Integer.toString(data.getByShip());
 		String byAir = Integer.toString(data.getByAir());
@@ -73,16 +78,13 @@ public class TransportationInfoController implements IController {
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 
-	public void addNew(TransportationInfo data) {
-		String siteCode = data.getSiteCode();
-		String siteName = data.getSiteName();
-		String byShip = Integer.toString(data.getByShip());
-		String byAir = Integer.toString(data.getByAir());
-		String others = data.getOthers();
+	public void addNew(DonHang data) {
+		String maDonHang = data.getMaDonHang();
+		String ngayNhan = data.getNgayNhan().toString();
 		// INSERT INTO `tkxdpm`.`transportationinfo` (`SiteCode`, `SiteName`, `byShip`)
 		// VALUES ('265', '21321', '1312sadsd');
 		String sql_stmt = "INSERT INTO transportationinfo (SiteCode,SiteName,byShip,byAir,others)";
-		sql_stmt += " VALUES ('" + siteCode + "','" + siteName + "','" + byShip + "','" + byAir + "','" + others + "')";
+		sql_stmt += " VALUES (" + maDonHang + "," + ngayNhan +")";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}

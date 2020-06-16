@@ -1,7 +1,7 @@
-package QuanLyPhuongThucVanChuyen.model;
+package QuanLyDonHang.model;
 
 import util.DBUtilities;
-import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
+import QuanLyDonHang.entity.DonHang;
 
 import java.sql.*;
 import java.util.ArrayList;
@@ -9,16 +9,15 @@ import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
-public class TransportationInfoModel extends AbstractTableModel {
-	//TransportationInfo[] data;
-	List<TransportationInfo> data = new ArrayList<TransportationInfo>();
+public class DonHangModel extends AbstractTableModel {
+	List<DonHang> data = new ArrayList<DonHang>();
 	private Connection connection;
 	private final Statement statement;
 	private ResultSet resultSet;
 	private ResultSetMetaData metaData;
 	private int numberOfRows;
 
-	public TransportationInfoModel(String query) throws SQLException {
+	public DonHangModel(String query) throws SQLException {
 		connection = DBUtilities.getConnection();
 		statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
 		resultSet = statement.executeQuery(query);
@@ -29,17 +28,17 @@ public class TransportationInfoModel extends AbstractTableModel {
 		fireTableStructureChanged();
 	}
 	
-	public ArrayList<TransportationInfo> getData() {
+	public ArrayList<DonHang> getData() {
 		//TransportationInfo[] list = null;
-		ArrayList<TransportationInfo> list = new ArrayList<TransportationInfo>();
+		ArrayList<DonHang> list = new ArrayList<DonHang>();
 		try {
 			while (resultSet.next()) {
-				  String siteCode = resultSet.getString("siteCode");
-				  String siteName = resultSet.getString("siteName");
-				  int byShip = resultSet.getInt("byShip");
-				  int byAir = resultSet.getInt("byAir");
-				  String others = resultSet.getString("others");
-				  TransportationInfo e = new TransportationInfo(siteCode,siteName,byShip,byAir,others);
+				  String maDonHang = resultSet.getString("maDonHang");
+				  Date ngayNhan = resultSet.getDate("ngayNhan");
+//				  int byShip = resultSet.getInt("byShip");
+//				  int byAir = resultSet.getInt("byAir");
+//				  String others = resultSet.getString("others");
+				  DonHang e = new DonHang(maDonHang,ngayNhan);
 				  list.add(e);
 				}
 		} catch (SQLException e) {
@@ -110,3 +109,4 @@ public class TransportationInfoModel extends AbstractTableModel {
 		}
 	}
 }
+
