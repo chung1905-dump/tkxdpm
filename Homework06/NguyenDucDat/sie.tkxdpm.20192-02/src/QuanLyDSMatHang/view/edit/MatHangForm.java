@@ -66,8 +66,9 @@ public class MatHangForm implements IView {
     }
 
     private MatHang prepareEntity() {
-        boolean isNew = ((JTextComponent) getComponentByName("id")).isEditable();
-        String id = ((JTextComponent) getComponentByName("id")).getText();
+        JTextComponent idField = (JTextComponent) getComponentByName("id");
+        boolean isNew = idField.isEditable();
+        String id = idField.getText();
         String name = ((JTextComponent) getComponentByName("ten")).getText();
         MatHang matHang = new MatHang(id, name);
         matHang.setNew(isNew);
