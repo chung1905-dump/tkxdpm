@@ -4,11 +4,12 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 import QuanLySite.Site;
+import QLDSMHCanDat.entity.*;
 
 public class DonHang {
 	private String maDonHang;
 	private Date ngayNhan;
-	private List<MHCanDat> DSMH;
+	private List<QLDSMHCanDat> DSMH;
 	private TrangThai trangThai;
 	private Site site;
 	
@@ -16,7 +17,7 @@ public class DonHang {
 		this.maDonHang = maDonHang;
 		this.ngayNhan = ngayNhan;
 		this.trangThai = TrangThai.ChuaChuyen;
-		this.DSMH = new ArrayList<MHCanDat>();		
+		this.DSMH = new ArrayList<QLDSMHCanDat>();		
 	}
 
 	public String getMaDonHang() {
@@ -35,11 +36,11 @@ public class DonHang {
 		this.ngayNhan = ngayNhan;
 	}
 
-	public List<MHCanDat> getDSMH() {
+	public List<QLDSMHCanDat> getDSMH() {
 		return DSMH;
 	}
 
-	public void setDSMH(List<MHCanDat> dSMH) {
+	public void setDSMH(List<QLDSMHCanDat> dSMH) {
 		DSMH = dSMH;
 	}
 
