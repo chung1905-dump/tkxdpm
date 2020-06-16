@@ -2,15 +2,10 @@ package QuanLyDonHang.view;
 
 import QuanLyDonHang.controller.DonHangController;
 import QuanLyDonHang.entity.DonHang;
-import QuanLyDonHang.model.DonHangModel;
 import main.view.IView;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.sql.Date;
-import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class DonHangGUI implements IView {
@@ -70,9 +65,5 @@ public class DonHangGUI implements IView {
             controller.deleteRecord(maDonHang.getText());
         });
         quayLaiButton.addActionListener(e -> controller.moveToHome());
-    }
-
-    private void createUIComponents() {
-        // TODO: place custom component creation code here
     }
 }
