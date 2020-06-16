@@ -4,6 +4,7 @@ import java.sql.*;
 
 import QLDSMHCanDat.setup.QLDSDHSchema;
 import QuanLyDSMatHang.setup.QLMHSchema;
+import QuanLyDonHang.setup.QLDHSchema;
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
 import QuanLyPhuongThucVanChuyen.setup.PTVCFixture;
@@ -51,11 +52,11 @@ public class Schema {
                 new PTVCFixture(),
                 new QLMHSchema(),
                 new QLDSDHSchema(),
-//                new QLDSDHFixture(),
                 new QLMHSchema(),
                 new QLDSDHSchema(),
                 new PTVCSchema(),
-                new PTVCFixture()
+                new PTVCFixture(),
+                new QLDHSchema()
                 // @todo: Insert more setup classes here
         };
     }
