@@ -5,7 +5,6 @@ import util.DatabaseExecutor;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,17 +38,15 @@ public class MHKD {
         return null;
     }
 
-    public boolean delete(int id) {
-        boolean result = false;
+    public void delete(int id) {
         try {
             PreparedStatement stmt = databaseExecutor.createPreparedStatement("DELETE FROM mat_hang_kinh_doanh WHERE id = ?");
             stmt.setInt(1, id);
-            result = stmt.execute();
+            stmt.execute();
             stmt.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        return result;
     }
 
     public MatHangKinhDoanh[] loadAll() {

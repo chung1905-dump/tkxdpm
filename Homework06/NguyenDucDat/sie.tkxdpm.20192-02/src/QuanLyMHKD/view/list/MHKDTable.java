@@ -20,6 +20,7 @@ public class MHKDTable implements IView {
 
             table = new JTable();
             table.setModel(new TableModel<>(data, MatHangKinhDoanh.class));
+            table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
             JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
             rootContainer.setLayout(new BorderLayout(0, 10));

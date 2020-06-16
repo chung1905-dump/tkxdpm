@@ -11,6 +11,7 @@ import java.sql.SQLException;
 
 public class Application {
     private static JFrame f;
+    private static IController currentController;
 
     public final static int ANIM_NONE = 0;
     public final static int ANIM_SWIPE_LEFT = 1;
@@ -62,6 +63,11 @@ public class Application {
                 }
             }).start();
         }
+        currentController = controller;
+    }
+
+    public static void refresh() {
+        runController(currentController);
     }
 
     private static void loading() throws SQLException {

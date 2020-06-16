@@ -2,6 +2,7 @@ package QuanLyMHKD.view.list;
 
 import QuanLyMHKD.model.MHKD;
 import QuanLyMHKD.view.MHKDListGUI;
+import main.Application;
 import main.view.IView;
 
 import javax.swing.*;
@@ -41,8 +42,8 @@ public class MHKDListToolbar implements IView {
         }
         try {
             MHKD model = new MHKD();
-            if (model.delete(id)) {
-            }
+            model.delete(id);
+            Application.refresh();
         } catch (Exception e) {
             e.printStackTrace();
         }
