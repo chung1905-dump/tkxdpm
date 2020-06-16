@@ -22,6 +22,7 @@ public class MainView implements IView {
         addBtn("Phuong thuc van chuyen", e -> controller.moveToTransportation());
         addBtn("Mat hang kinh doanh", e -> controller.moveToMHKD());
         addBtn("Danh sach mat hang can dat" , e -> controller.moveToListProduct());
+        addBtn("Quan ly mat hang" , e -> controller.moveToMatHang());
         addBtn("QUIT", e -> System.exit(0));
         return rootContainer;
     }

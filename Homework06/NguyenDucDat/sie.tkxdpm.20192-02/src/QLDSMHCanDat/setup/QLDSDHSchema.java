@@ -9,6 +9,6 @@ public class QLDSDHSchema implements ISetup{
                 " DonVi VARCHAR(255), " +
                 " NgayNhan DATE, " +
                 " PRIMARY KEY ( idDSMHCD )," +
-                "FOREIGN KEY (idSanPham) REFERENCES mathang (maMH) ON DELETE CASCADE ON UPDATE RESTRICT )";
+                "FOREIGN KEY (idSanPham) REFERENCES mathang (id) ON DELETE CASCADE ON UPDATE RESTRICT )";
     }
 }

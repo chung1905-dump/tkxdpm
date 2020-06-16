@@ -1,7 +1,14 @@
-package QuanLyDSMatHang;
+package QuanLyDSMatHang.entity;
 
+
+import main.entity.annotation.Column;
+import main.entity.annotation.Entity;
+
+@Entity(table = "mathang", primaryKey = "id")
 public class MatHang {
+	@Column(name = "id", type = "VARCHAR(255)")
 	private String id;
+	@Column(name = "ten", type = "VARCHAR(255)")
 	private String ten;
 	
 	public MatHang(String id, String ten) {
@@ -24,6 +31,4 @@ public class MatHang {
 	public void setTen(String ten) {
 		this.ten = ten;
 	}
-	
-	
 }

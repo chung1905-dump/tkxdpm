@@ -7,5 +7,5 @@ import java.lang.annotation.RetentionPolicy;
 public @interface Entity {
     String table();
 
-    String primaryKey();
+    String primaryKey() default "";
 }

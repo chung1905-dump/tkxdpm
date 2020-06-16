@@ -3,7 +3,7 @@ package setup.database;
 import java.sql.*;
 
 import QLDSMHCanDat.setup.QLDSDHSchema;
-import QuanLyDSMatHang.QLMHSchema;
+import QuanLyDSMatHang.setup.QLMHSchema;
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
 import QuanLyPhuongThucVanChuyen.setup.PTVCFixture;

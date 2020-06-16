@@ -1,6 +1,6 @@
 package QuanLyDonHang.entity;
 
-import QuanLyDSMatHang.MatHang;
+import QuanLyDSMatHang.entity.MatHang;
 
 public class MHCanDat {
 	private MatHang matHang;
