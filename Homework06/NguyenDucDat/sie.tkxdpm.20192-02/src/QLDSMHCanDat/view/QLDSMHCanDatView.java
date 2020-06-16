@@ -6,9 +6,17 @@ import main.view.IView;
 
 import java.awt.*;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import org.jdesktop.swingx.JXDatePicker;
 
 public class QLDSMHCanDatView extends Container implements IView {
 	DSMHCanDatController controller;
@@ -17,7 +25,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 	private javax.swing.JTextField txtIDProduct;
 	private javax.swing.JTextField txtNumber;
 	private javax.swing.JTextField txtUnit;
-	private javax.swing.JTextField txtDate;
+	//private javax.swing.JTextField txtDate;
+	private JXDatePicker txtDate;
 	
 
 	boolean addRecord = false;
@@ -27,7 +36,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 		txtNumber.setText("");
 		// cboGender.setSelectedItem("");
 		txtUnit.setText("");
-		txtDate.setText("");
+		
+		txtDate.setDate(Calendar.getInstance().getTime());
 		
 	}
 
@@ -68,14 +78,16 @@ public class QLDSMHCanDatView extends Container implements IView {
 					Object number = jTable1.getValueAt(jTable1.getSelectedRow(), 1);
 					Object unit = jTable1.getValueAt(jTable1.getSelectedRow(), 2);
 					Object date = jTable1.getValueAt(jTable1.getSelectedRow(), 3);
-					
+					//@SuppressWarnings("deprecation")
+					Date d = DateFormat.getInstance().parse(date.toString());
 					// Object salary = jTable1.getValueAt(jTable1.getSelectedRow(), 5);
 
 					txtIDProduct.setText(idProduct.toString());
 					txtNumber.setText(number.toString());
 					// cboGender.setSelectedItem(gender.toString());
 					txtUnit.setText(unit.toString());
-					txtDate.setText(date.toString());
+					txtDate.setDate(d);
+					//txtDate.setText(date.toString());
 					
 				}
 			} catch (Exception ex) {
@@ -110,8 +122,10 @@ public class QLDSMHCanDatView extends Container implements IView {
 		javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
 		txtUnit = new javax.swing.JTextField();
 		javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
-		txtDate = new javax.swing.JTextField();
-		
+		//txtDate = new javax.swing.JTextField();
+		txtDate = new JXDatePicker();
+		txtDate.setFormats(new SimpleDateFormat("yyyy-MM-dd"));
+		txtDate.setDate(Calendar.getInstance().getTime());
 		javax.swing.JButton btnAddNew = new javax.swing.JButton();
 		javax.swing.JButton btnUpdate = new javax.swing.JButton();
 		javax.swing.JButton btnDelete = new javax.swing.JButton();
@@ -262,16 +276,23 @@ public class QLDSMHCanDatView extends Container implements IView {
 			String idProduct = txtIDProduct.getText();
 			String number = txtNumber.getText();
 			String unit = txtUnit.getText();
-			String date = txtDate.getText();
+			//@SuppressWarnings("deprecation");
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(txtDate.getDate());
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH) + 1;
+			int date = calendar.get(Calendar.DAY_OF_MONTH);
+			String datestr = year+"-"+month+"-"+date;
 			
+			//Calendar c = new Ca
 			try {
 				if (addRecord) {
 					// addNew();
 					//txtSiteCode.setd
-					controller.addNew(idProduct, number, unit, date);
+					controller.addNew(idProduct, number, unit, datestr);
 					clearInputBoxes();
 				} else {
-					controller.updateRecord(idProduct, number, unit, date);
+					controller.updateRecord(idProduct, number, unit, datestr);
 					// updateRecord();
 				}
 
