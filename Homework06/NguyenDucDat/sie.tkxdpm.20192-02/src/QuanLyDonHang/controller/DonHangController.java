@@ -5,7 +5,6 @@ import java.sql.SQLException;
 import QuanLyDonHang.view.DonHangGUI;
 import util.DBUtilities;
 import QuanLyDonHang.entity.DonHang;
-import QuanLyDonHang.view.DonHangView;
 import QuanLyDonHang.model.DonHangModel;
 import main.controller.MainController;
 import main.Application;

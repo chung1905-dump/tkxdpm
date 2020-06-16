@@ -8,9 +8,17 @@ import main.view.IView;
 
 import java.awt.*;
 import java.sql.SQLException;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.GregorianCalendar;
+
 import javax.swing.*;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.table.DefaultTableCellRenderer;
+
+import org.jdesktop.swingx.JXDatePicker;
 
 public class QLDSMHCanDatView extends Container implements IView {
 	DSMHCanDatController controller;
@@ -21,7 +29,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 	private javax.swing.JTextField txtIDProduct;
 	private javax.swing.JTextField txtNumber;
 	private javax.swing.JTextField txtUnit;
-	private javax.swing.JTextField txtDate;
+	//private javax.swing.JTextField txtDate;
+	private JXDatePicker txtDate;
 	
 
 	boolean addRecord = false;
@@ -33,7 +42,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 		txtNumber.setText("");
 		// cboGender.setSelectedItem("");
 		txtUnit.setText("");
-		txtDate.setText("");
+		
+		txtDate.setDate(Calendar.getInstance().getTime());
 		
 	}
 
@@ -72,21 +82,16 @@ public class QLDSMHCanDatView extends Container implements IView {
 				if (jTable1.getSelectedRow() >= 0) {
 					Object idProduct = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
 					Object idSanPham = jTable1.getValueAt(jTable1.getSelectedRow(), 1);
-					Object TenSanPham = jTable1.getValueAt(jTable1.getSelectedRow(), 2);
-					Object SoLuong = jTable1.getValueAt(jTable1.getSelectedRow(), 3);
-					Object DonVi = jTable1.getValueAt(jTable1.getSelectedRow(), 4);
-					Object NgayNhan = jTable1.getValueAt(jTable1.getSelectedRow(), 5);
-					
-					// Object salary = jTable1.getValueAt(jTable1.getSelectedRow(), 5);
+					Object SoLuong = jTable1.getValueAt(jTable1.getSelectedRow(), 2);
+					Object DonVi = jTable1.getValueAt(jTable1.getSelectedRow(), 3);
+					Object date = jTable1.getValueAt(jTable1.getSelectedRow(), 4);
+					Date d =  new SimpleDateFormat("yyyy-MM-dd").parse(date.toString());
 
 					txtIDProduct.setText(idProduct.toString());
 					txtIdSanPham.setText(idSanPham.toString());
-					txtTenSanPham.setText(TenSanPham.toString());
 					txtNumber.setText(SoLuong.toString());
-					// cboGender.setSelectedItem(gender.toString());
 					txtUnit.setText(DonVi.toString());
-					txtDate.setText(NgayNhan.toString());
-					
+					txtDate.setDate(d);
 				}
 			} catch (Exception ex) {
 				System.out.println(ex.getMessage());
@@ -125,8 +130,10 @@ public class QLDSMHCanDatView extends Container implements IView {
 		javax.swing.JLabel jLabel5 = new javax.swing.JLabel();
 		txtUnit = new javax.swing.JTextField();
 		javax.swing.JLabel jLabel6 = new javax.swing.JLabel();
-		txtDate = new javax.swing.JTextField();
-		
+		//txtDate = new javax.swing.JTextField();
+		txtDate = new JXDatePicker();
+		txtDate.setFormats(new SimpleDateFormat("yyyy-MM-dd"));
+		txtDate.setDate(Calendar.getInstance().getTime());
 		javax.swing.JButton btnAddNew = new javax.swing.JButton();
 		javax.swing.JButton btnUpdate = new javax.swing.JButton();
 		javax.swing.JButton btnDelete = new javax.swing.JButton();
@@ -289,16 +296,23 @@ public class QLDSMHCanDatView extends Container implements IView {
 //			String TenSanPham = txtTenSanPham.getText();
 			String number = txtNumber.getText();
 			String unit = txtUnit.getText();
-			String date = txtDate.getText();
+			//@SuppressWarnings("deprecation");
+			Calendar calendar = new GregorianCalendar();
+			calendar.setTime(txtDate.getDate());
+			int year = calendar.get(Calendar.YEAR);
+			int month = calendar.get(Calendar.MONTH) + 1;
+			int date = calendar.get(Calendar.DAY_OF_MONTH);
+			String datestr = year+"-"+month+"-"+date;
 			
+			//Calendar c = new Ca
 			try {
 				if (addRecord) {
 					// addNew();
 					//txtSiteCode.setd
-					controller.addNew(idSanPham , number, unit, date);
+					controller.addNew(idSanPham, number, unit, datestr);
 					clearInputBoxes();
 				} else {
-					controller.updateRecord(idDSMHCD ,idSanPham, number, unit, date);
+					controller.updateRecord(idDSMHCD, idSanPham, number, unit, datestr);
 					// updateRecord();
 				}
 

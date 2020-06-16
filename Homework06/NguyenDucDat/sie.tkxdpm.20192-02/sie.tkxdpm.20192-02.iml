@@ -18,5 +18,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="mysql-connector-java-8.0.20" level="project" />
+    <orderEntry type="library" name="jar_files" level="project" />
   </component>
 </module>

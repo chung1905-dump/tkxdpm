@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/jre1.8.0_152">
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
@@ -12,7 +12,12 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="lib" path="lib/mysql-connector-java-8.0.20.jar"/>
-	<classpathentry kind="lib" path="jgoodies-forms-1.8.0.jar" sourcepath="jgoodies-forms-1.8.0-sources.jar"/>
-	<classpathentry kind="lib" path="miglayout15-swing.jar" sourcepath="miglayout-src.zip"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-action-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-autocomplete-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-common-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-core-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-graphics-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-painters-1.6.5-1.jar"/>
+	<classpathentry kind="lib" path="F:/sie.tkxdpm.20192-02/Homework06/jar_files/swingx-plaf-1.6.5-1.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>
