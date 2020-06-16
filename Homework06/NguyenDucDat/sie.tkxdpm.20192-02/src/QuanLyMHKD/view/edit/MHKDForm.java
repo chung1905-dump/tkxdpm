@@ -71,7 +71,7 @@ public class MHKDForm implements IView {
     private MatHangKinhDoanh prepareEntity() {
         String idStr = ((JTextComponent) getComponentByName("id")).getText();
         int id;
-        if (idStr.isBlank()) {
+        if (idStr.isEmpty()) {
             id = 0;
         } else {
             id = Integer.parseInt(idStr);
