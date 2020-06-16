@@ -12,7 +12,7 @@ public class DonHangGUI implements IView {
     private JPanel mainPanel;
     private JTable donHangTable;
     private JTextField maDonHang;
-    private JTextField ngayNhan;
+    private org.jdesktop.swingx.JXDatePicker ngayNhan;
     private JComboBox matHang;
     private JTable matHangTable;
     private JButton addMatHang;
@@ -44,7 +44,7 @@ public class DonHangGUI implements IView {
         taoButton.addActionListener(e -> {
             DonHang dh;
             try {
-                dh = new DonHang(maDonHang.getText(), new SimpleDateFormat("yyyy-MM-dd").parse(ngayNhan.getText()));
+                dh = new DonHang(maDonHang.getText(), ngayNhan.getDate());
                 controller.addNew(dh);
                 donHangTable.setModel(controller.loadRecords());
             } catch (Exception ex) {
@@ -54,7 +54,7 @@ public class DonHangGUI implements IView {
         suaButton.addActionListener(e -> {
             DonHang dh;
             try {
-                dh = new DonHang(maDonHang.getText(), new SimpleDateFormat("yyyy-MM-dd").parse(ngayNhan.getText()));
+                dh = new DonHang(maDonHang.getText(), ngayNhan.getDate());
                 controller.updateRecord(dh, maDonHang.getText());
                 donHangTable.setModel(controller.loadRecords());
             } catch (Exception ex) {
