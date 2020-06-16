@@ -56,6 +56,7 @@ public class TransportationWindow extends Container implements IView {
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 
+
 	private void deleteRecord() {
 		controller.deleteRecord(txtID.getText());
 //		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + txtID.getText() + "'";

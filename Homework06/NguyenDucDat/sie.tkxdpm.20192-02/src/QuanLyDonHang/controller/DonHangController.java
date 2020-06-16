@@ -1,20 +1,15 @@
 package QuanLyDonHang.controller;
 
 import java.sql.SQLException;
-import java.util.ArrayList;
 
-import javax.swing.table.TableModel;
-
-import JDBC.DBUtilities;
-import QuanLyDonHang.entity.MHCanDat;
+import util.DBUtilities;
 import QuanLyDonHang.entity.DonHang;
 import QuanLyDonHang.view.DonHangView;
 import QuanLyDonHang.model.DonHangModel;
-import QuanLyDSMatHang.MatHang;
-import core.MainController;
+import main.controller.MainController;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.controller.IController;
+import main.view.IView;
 
 public class DonHangController implements IController {
 	@Override

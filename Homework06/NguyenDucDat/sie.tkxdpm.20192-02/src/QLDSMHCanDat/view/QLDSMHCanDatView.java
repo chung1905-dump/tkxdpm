@@ -16,6 +16,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 	DSMHCanDatController controller;
 
 	private javax.swing.JTable jTable1;
+	private javax.swing.JTextField txtTenSanPham;
+	private javax.swing.JTextField txtIdSanPham;
 	private javax.swing.JTextField txtIDProduct;
 	private javax.swing.JTextField txtNumber;
 	private javax.swing.JTextField txtUnit;
@@ -26,6 +28,8 @@ public class QLDSMHCanDatView extends Container implements IView {
 
 	private void clearInputBoxes() {
 		txtIDProduct.setText("");
+		txtIdSanPham.setText("");
+		txtTenSanPham.setText("");
 		txtNumber.setText("");
 		// cboGender.setSelectedItem("");
 		txtUnit.setText("");
@@ -67,17 +71,21 @@ public class QLDSMHCanDatView extends Container implements IView {
 			try {
 				if (jTable1.getSelectedRow() >= 0) {
 					Object idProduct = jTable1.getValueAt(jTable1.getSelectedRow(), 0);
-					Object number = jTable1.getValueAt(jTable1.getSelectedRow(), 1);
-					Object unit = jTable1.getValueAt(jTable1.getSelectedRow(), 2);
-					Object date = jTable1.getValueAt(jTable1.getSelectedRow(), 3);
+					Object idSanPham = jTable1.getValueAt(jTable1.getSelectedRow(), 1);
+					Object TenSanPham = jTable1.getValueAt(jTable1.getSelectedRow(), 2);
+					Object SoLuong = jTable1.getValueAt(jTable1.getSelectedRow(), 3);
+					Object DonVi = jTable1.getValueAt(jTable1.getSelectedRow(), 4);
+					Object NgayNhan = jTable1.getValueAt(jTable1.getSelectedRow(), 5);
 					
 					// Object salary = jTable1.getValueAt(jTable1.getSelectedRow(), 5);
 
 					txtIDProduct.setText(idProduct.toString());
-					txtNumber.setText(number.toString());
+					txtIdSanPham.setText(idSanPham.toString());
+					txtTenSanPham.setText(TenSanPham.toString());
+					txtNumber.setText(SoLuong.toString());
 					// cboGender.setSelectedItem(gender.toString());
-					txtUnit.setText(unit.toString());
-					txtDate.setText(date.toString());
+					txtUnit.setText(DonVi.toString());
+					txtDate.setText(NgayNhan.toString());
 					
 				}
 			} catch (Exception ex) {
@@ -106,6 +114,11 @@ public class QLDSMHCanDatView extends Container implements IView {
 		javax.swing.JLabel jLabel2 = new javax.swing.JLabel();
 		txtIDProduct = new javax.swing.JTextField();
 		javax.swing.JLabel jLabel3 = new javax.swing.JLabel();
+		txtIdSanPham = new javax.swing.JTextField();
+		javax.swing.JLabel jLabel7 = new javax.swing.JLabel();
+		txtTenSanPham = new javax.swing.JTextField();
+		javax.swing.JLabel jLabel8 = new javax.swing.JLabel();
+		
 		txtNumber = new javax.swing.JTextField();
 		javax.swing.JLabel jLabel4 = new javax.swing.JLabel();
 		// cboGender = new javax.swing.JComboBox<>();
@@ -140,33 +153,40 @@ public class QLDSMHCanDatView extends Container implements IView {
 
 		jLabel2.setText("ID Product:");
 		txtIDProduct.setEnabled(false);
-		jLabel3.setText("Number:");
+		jLabel7.setText("ID San Pham:");
+		jLabel8.setText("Ten San Pham:");
+		jLabel3.setText("So Luong:");
 //        jLabel4.setText("Gender:");
 //        cboGender.setModel(new javax.swing.DefaultComboBoxModel<>(new String[]{"Male", "Female"}));
-		jLabel5.setText("Unit:");
-		jLabel6.setText("Date:");
+		jLabel5.setText("Don Vi:");
+		jLabel6.setText("Ngay Nhan:");
 		
 
 		// javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
 		// jPanel1.setLayout(jPanel1Layout);
-		jPanel1.setLayout(new GridLayout(5, 2));
+		jPanel1.setLayout(new GridLayout(10, 2));
 		jPanel1.add(jLabel2);
 		jPanel1.add(txtIDProduct);
+		jPanel1.add(jLabel7);
+		jPanel1.add(txtIdSanPham);
+		jPanel1.add(jLabel8);
+		jPanel1.add(txtTenSanPham);
 		jPanel1.add(jLabel3);
 		jPanel1.add(txtNumber);
 		jPanel1.add(jLabel5);
 		jPanel1.add(txtUnit);
 		jPanel1.add(jLabel6);
 		jPanel1.add(txtDate);
+	
 		
 
-		btnAddNew.setText("Add New");
+		btnAddNew.setText("Them moi");
 		btnAddNew.addActionListener(evt -> {
 			addRecord = true;
 			btnUpdateActionPerformed(evt);
 		});
 
-		btnUpdate.setText("Update");
+		btnUpdate.setText("Cap nhat");
 		btnUpdate.addActionListener(evt -> {
 			addRecord = false;
 			btnUpdateActionPerformed(evt);
@@ -191,10 +211,10 @@ public class QLDSMHCanDatView extends Container implements IView {
 //				}
 //			}
 //		});
-		btnDelete.setText("Delete");
+		btnDelete.setText("Xoa");
 		btnDelete.addActionListener(this::btnDeleteActionPerformed);
 
-		btnClose.setText("Close");
+		btnClose.setText("Dong");
 		btnClose.addActionListener(this::btnCloseActionPerformed);
 
 		jTable1.setModel(new javax.swing.table.DefaultTableModel(new Object[][] { {}, {}, {}, {} }, new String[] {
@@ -235,9 +255,11 @@ public class QLDSMHCanDatView extends Container implements IView {
 						.addComponent(btnUpdate).addComponent(btnDelete).addComponent(btnClose))
 				.addContainerGap(21, Short.MAX_VALUE)));
 	}
+	
 
 	private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {
 		Application.runController(new MainController(), Application.ANIM_SWIPE_RIGHT);
+		controller.moveToHome();
 	}
 
 	private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -261,7 +283,10 @@ public class QLDSMHCanDatView extends Container implements IView {
 				addRecord ? "Confirm Add Record" : "Confirm Update Record?", JOptionPane.YES_NO_OPTION);
 
 		if (dialogResult == JOptionPane.YES_OPTION) {
-			String idProduct = txtIDProduct.getText();
+		
+			String idDSMHCD = txtIDProduct.getText();
+			String idSanPham = txtIdSanPham.getText();
+//			String TenSanPham = txtTenSanPham.getText();
 			String number = txtNumber.getText();
 			String unit = txtUnit.getText();
 			String date = txtDate.getText();
@@ -270,10 +295,10 @@ public class QLDSMHCanDatView extends Container implements IView {
 				if (addRecord) {
 					// addNew();
 					//txtSiteCode.setd
-					controller.addNew(idProduct, number, unit, date);
+					controller.addNew(idSanPham , number, unit, date);
 					clearInputBoxes();
 				} else {
-					controller.updateRecord(idProduct, number, unit, date);
+					controller.updateRecord(idDSMHCD ,idSanPham, number, unit, date);
 					// updateRecord();
 				}
 
