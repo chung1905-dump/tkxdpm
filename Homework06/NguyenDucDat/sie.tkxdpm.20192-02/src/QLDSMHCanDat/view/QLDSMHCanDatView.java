@@ -2,6 +2,8 @@ package QLDSMHCanDat.view;
 
 import QLDSMHCanDat.controller.DSMHCanDatController;
 import QLDSMHCanDat.model.QLDSMHCanDatModel;
+import main.Application;
+import main.controller.MainController;
 import main.view.IView;
 
 import java.awt.*;
@@ -235,7 +237,7 @@ public class QLDSMHCanDatView extends Container implements IView {
 	}
 
 	private void btnCloseActionPerformed(java.awt.event.ActionEvent evt) {
-		System.exit(1);
+		Application.runController(new MainController(), Application.ANIM_SWIPE_RIGHT);
 	}
 
 	private void btnDeleteActionPerformed(java.awt.event.ActionEvent evt) {
@@ -284,18 +286,6 @@ public class QLDSMHCanDatView extends Container implements IView {
 
 	@Override
 	public Container draw() {
-		try {
-			for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-				if ("Nimbus".equals(info.getName())) {
-					javax.swing.UIManager.setLookAndFeel(info.getClassName());
-					break;
-				}
-			}
-		} catch (ClassNotFoundException | InstantiationException | IllegalAccessException
-				| UnsupportedLookAndFeelException ex) {
-			java.util.logging.Logger.getLogger(QLDSMHCanDatView.class.getName()).log(java.util.logging.Level.SEVERE,
-					null, ex);
-		}
 		try {
 			loadRecords();
 		} catch (SQLException ex) {

@@ -12,12 +12,10 @@ import main.view.IView;
 public class DSMHCanDatController implements IController {
     @Override
     public IView run() {
-    	DSMHCanDatController controller = new DSMHCanDatController();
         return new QLDSMHCanDatView(this);
     }
     
 	public QLDSMHCanDatModel loadRecords() throws SQLException {
-		
 		String sql_stmt = "SELECT * FROM qldsmhcandat;";
 		System.out.println(sql_stmt);
 		// ResultSetTableModel tableModel = new ResultSetTableModel(sql_stmt);

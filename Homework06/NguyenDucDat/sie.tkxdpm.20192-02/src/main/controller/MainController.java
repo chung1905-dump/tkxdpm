@@ -20,13 +20,7 @@ public class MainController implements IController {
         Application.runController(new TransportationInfoController(), Application.ANIM_SWIPE_LEFT);
     }
 
-    public void moveToHome() {
-        Application.runController(new MainController(), Application.ANIM_SWIPE_LEFT);
-        Application.runController(new TransportationInfoController(), 1);
-
-    }
-
     public void moveToListProduct() {
-        Application.runController(new DSMHCanDatController());
+        Application.runController(new DSMHCanDatController(), Application.ANIM_SWIPE_LEFT);
     }
 }

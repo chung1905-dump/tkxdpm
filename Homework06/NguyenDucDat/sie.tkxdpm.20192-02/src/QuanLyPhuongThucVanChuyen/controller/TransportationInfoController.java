@@ -19,7 +19,7 @@ public class TransportationInfoController implements IController {
 	}
 
 	public void moveToHome() {
-		Application.runController(new MainController(), Application.ANIM_SWIPE_LEFT);
+		Application.runController(new MainController(), Application.ANIM_SWIPE_RIGHT);
 	}
 
 	public TransportationInfoModel loadRecords() throws SQLException {
