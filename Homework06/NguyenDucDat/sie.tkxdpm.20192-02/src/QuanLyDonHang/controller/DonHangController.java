@@ -5,16 +5,15 @@ import java.util.ArrayList;
 
 import javax.swing.table.TableModel;
 
-import JDBC.DBUtilities;
+import util.DBUtilities;
 import QuanLyDonHang.entity.MHCanDat;
 import QuanLyDonHang.entity.DonHang;
 import QuanLyDonHang.view.DonHangView;
 import QuanLyDonHang.model.DonHangModel;
 import QuanLyDSMatHang.MatHang;
-import core.MainController;
+import main.controller.*;
 import main.Application;
-import main.IController;
-import main.IView;
+import main.view.*;
 
 public class DonHangController implements IController {
 	@Override
@@ -29,7 +28,7 @@ public class DonHangController implements IController {
 
 	public DonHangModel loadRecords() throws SQLException {
 
-		String sql_stmt = "SELECT * FROM transportationinfo;";
+		String sql_stmt = "SELECT * FROM donHang;";
 		System.out.println(sql_stmt);
 		// ResultSetTableModel tableModel = new ResultSetTableModel(sql_stmt);
 		DonHangModel tableModel = new DonHangModel(sql_stmt);
@@ -37,18 +36,15 @@ public class DonHangController implements IController {
 		return tableModel;
 	}
 
-	public void deleteRecord(String siteCode) {
-		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + siteCode + "'";
+	public void deleteRecord(String maDonHang) {
+		String sql_stmt = "DELETE FROM donHang WHERE maDonHang = '" + maDonHang + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 
 	public void updateRecord(DonHang data, String id) {
 		String maDonHang = data.getMaDonHang();
-		String siteName = data.getSiteName();
-		String byShip = Integer.toString(data.getByShip());
-		String byAir = Integer.toString(data.getByAir());
-		String others = data.getOthers();
+		String ngayNhan = data.getNgayNhan().toString();
 //		try {
 //			TransportationInfoModel tableModel = this.loadRecords();
 //			
@@ -67,13 +63,13 @@ public class DonHangController implements IController {
 //			e.printStackTrace();
 //		}
 
-		String sql_stmt = "UPDATE transportationinfo SET SiteName = '" + siteName + "'";
+		String sql_stmt = "UPDATE donHang SET ngayNhan = " + ngayNhan;
 		// sql_stmt += ",gender = '" + cboGender.getSelectedItem().toString() + "'";
-		sql_stmt += ",SiteCode = '" + siteCode + "'";
-		sql_stmt += ",byShip = '" + byShip + "'";
-		sql_stmt += ",byAir = '" + byAir + "'";
-		sql_stmt += ",others = '" + others + "'";
-		sql_stmt += " WHERE id = '" + id + "'";
+//		sql_stmt += ",SiteCode = '" + siteCode + "'";
+//		sql_stmt += ",byShip = '" + byShip + "'";
+//		sql_stmt += ",byAir = '" + byAir + "'";
+//		sql_stmt += ",others = '" + others + "'";
+		sql_stmt += " WHERE maDonHang = '" + id + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
@@ -83,8 +79,8 @@ public class DonHangController implements IController {
 		String ngayNhan = data.getNgayNhan().toString();
 		// INSERT INTO `tkxdpm`.`transportationinfo` (`SiteCode`, `SiteName`, `byShip`)
 		// VALUES ('265', '21321', '1312sadsd');
-		String sql_stmt = "INSERT INTO transportationinfo (SiteCode,SiteName,byShip,byAir,others)";
-		sql_stmt += " VALUES (" + maDonHang + "," + ngayNhan +")";
+		String sql_stmt = "INSERT INTO donHang (maDonHang,ngayNhan)";
+		sql_stmt += " VALUES ('" + maDonHang + "'," + ngayNhan +")";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}

@@ -4,10 +4,11 @@ public class QLDSDHSchema implements ISetup{
 	public String getRawSQL() {
         return "CREATE TABLE IF NOT EXISTS qldsmhcandat " +
                 
-                " (idProduct int AUTO_INCREMENT, " +
-                " number int, " +
-                " unit VARCHAR(255), " +
-                " date DATE, " +
-                " PRIMARY KEY ( idProduct ))";
+                " (idDSMHCD int AUTO_INCREMENT, " +
+                " idSanPham VARCHAR(255), " +
+                " SoLuong int, " +
+                " DonVi VARCHAR(255),"+
+                " NgayNhan DATE, " +
+                " PRIMARY KEY ( idDSMHCD ))";
     }
 }
