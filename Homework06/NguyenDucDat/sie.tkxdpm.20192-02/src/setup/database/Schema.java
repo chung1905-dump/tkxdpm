@@ -2,8 +2,8 @@ package setup.database;
 
 import java.sql.*;
 
-import QLDSMHCanDat.setup.QLDSDHFixture;
 import QLDSMHCanDat.setup.QLDSDHSchema;
+import QuanLyDSMatHang.QLMHSchema;
 import QuanLyMHKD.setup.MHKDFixture;
 import QuanLyMHKD.setup.MHKDSchema;
 import QuanLyPhuongThucVanChuyen.setup.PTVCFixture;
@@ -46,14 +46,14 @@ public class Schema {
     private ISetup[] loadSetup() {
         return new ISetup[]{
                 new MHKDSchema(),
-                new MHKDFixture(),
-<<<<<<< HEAD
+//                new MHKDFixture(),
+                new QLMHSchema(),
                 new QLDSDHSchema(),
-                new QLDSDHFixture()
-=======
+              
+                
                 new PTVCSchema(),
-                new PTVCFixture()
->>>>>>> 37e6aa55e18d21e81d2757e85a310e76d5b88f07
+//                new PTVCFixture()
+
                 // @todo: Insert more setup classes here
         };
     }

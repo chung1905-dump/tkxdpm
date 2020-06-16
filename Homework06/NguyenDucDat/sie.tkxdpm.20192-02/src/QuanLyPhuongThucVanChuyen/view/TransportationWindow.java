@@ -4,6 +4,8 @@ import JDBC.DBUtilities;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
 import QuanLyPhuongThucVanChuyen.entity.TransportationInfo;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
+import core.MainController;
+import main.Application;
 import main.IView;
 
 import java.awt.*;
@@ -55,6 +57,7 @@ public class TransportationWindow extends Container implements IView {
 
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
+
 
 	private void deleteRecord() {
 		controller.deleteRecord(txtID.getText());

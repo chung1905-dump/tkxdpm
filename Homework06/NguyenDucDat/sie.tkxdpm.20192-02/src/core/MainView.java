@@ -21,12 +21,12 @@ public class MainView implements IView {
         rootContainer.setLayout(layout);
         addBtn("Phuong thuc van chuyen", e -> controller.moveToTransportation());
         addBtn("Mat hang kinh doanh", e -> controller.moveToMHKD());
-<<<<<<< HEAD
+
         addBtn("Danh sach mat hang can dat" , e -> controller.moveToListProduct());
-        addBtn("QUIT", e -> System.out.println("QUIT"));
-=======
+      
+
         addBtn("QUIT", e -> System.exit(1));
->>>>>>> 37e6aa55e18d21e81d2757e85a310e76d5b88f07
+
         
         return rootContainer;
     }

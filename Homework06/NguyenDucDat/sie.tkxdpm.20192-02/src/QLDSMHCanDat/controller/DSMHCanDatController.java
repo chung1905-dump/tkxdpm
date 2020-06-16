@@ -10,6 +10,8 @@ import QLDSMHCanDat.view.QLDSMHCanDatView;
 import QuanLyPhuongThucVanChuyen.view.TransportationInfoGUI;
 import QuanLyPhuongThucVanChuyen.model.TransportationInfoModel;
 import QuanLyPhuongThucVanChuyen.view.TransportationWindow;
+import core.MainController;
+import main.Application;
 import main.IController;
 import main.IView;
 
@@ -19,7 +21,9 @@ public class DSMHCanDatController implements IController {
     	DSMHCanDatController controller = new DSMHCanDatController();
         return new QLDSMHCanDatView(this);
     }
-    
+    public void moveToHome() {
+		Application.runController(new MainController(), Application.ANIM_SWIPE_LEFT);
+	}
 	public QLDSMHCanDatModel loadRecords() throws SQLException {
 		
 		String sql_stmt = "SELECT * FROM qldsmhcandat;";
@@ -31,27 +35,29 @@ public class DSMHCanDatController implements IController {
 	}
 	
 	public void deleteRecord(String idProduct) {
-		String sql_stmt = "DELETE FROM qldsmhcandat WHERE idProduct = '" + idProduct + "'";
+		String sql_stmt = "DELETE FROM qldsmhcandat WHERE idDSMHCD = '" + idProduct + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 	
-	public void updateRecord(String idProduct, String number, String unit, String date ) {
-		String sql_stmt = "UPDATE qldsmhcandat SET idProduct = '" + idProduct + "'";
+	public void updateRecord(String idDSMHCD,String idSanPham, String SoLuong, String DonVi, String NgayNhan ) {
+		String sql_stmt = "UPDATE qldsmhcandat SET idDSMHCD = '" + idDSMHCD + "'";
 		// sql_stmt += ",gender = '" + cboGender.getSelectedItem().toString() + "'";
-		sql_stmt += ",number = '" + number + "'";
-		sql_stmt += ",unit = '" + unit + "'";
-		sql_stmt += ",date = '" + date + "'";
-		sql_stmt += " WHERE idProduct = '" + idProduct + "'";
+//		sql_stmt += ",TenSanPham = '" + TenSanPham + "'";
+		sql_stmt += ",idSanPham = '" + idSanPham + "'";
+		sql_stmt += ",SoLuong = '" + SoLuong + "'";
+		sql_stmt += ",DonVi = '" + DonVi + "'";
+		sql_stmt += ",NgayNhan = '" + NgayNhan + "'";
+		sql_stmt += " WHERE idDSMHCD = '" + idDSMHCD + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
 	
-	public void addNew(String idProduct, String number, String unit, String date) {
+	public void addNew( String idSanPham, String SoLuong, String DonVi, String NgayNhan) {
 		// INSERT INTO `tkxdpm`.`transportationinfo` (`SiteCode`, `SiteName`, `byShip`)
 		// VALUES ('265', '21321', '1312sadsd');
-		String sql_stmt = "INSERT INTO qldsmhcandat (number,unit,date)";
-		sql_stmt += " VALUES ('"+ number + "','" + unit + "','" + date + "')";
+		String sql_stmt = "INSERT INTO qldsmhcandat (idSanPham,SoLuong,DonVi,NgayNhan)";
+		sql_stmt += " VALUES ('"+ idSanPham + "'," + SoLuong + ",'" + DonVi + "','" + NgayNhan + "')";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}
