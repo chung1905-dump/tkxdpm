@@ -49,6 +49,7 @@ public class Schema {
                 new MHKDFixture(),
                 new PTVCSchema(),
                 new PTVCFixture(),
+                new QLMHSchema(),
                 new QLDSDHSchema(),
 //                new QLDSDHFixture(),
                 new QLMHSchema(),
