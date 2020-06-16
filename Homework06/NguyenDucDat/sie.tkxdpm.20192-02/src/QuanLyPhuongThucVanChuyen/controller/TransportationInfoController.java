@@ -36,8 +36,8 @@ public class TransportationInfoController implements IController {
 		return tableModel;
 	}
 
-	public void deleteRecord(String siteCode) {
-		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + siteCode + "'";
+	public void deleteRecord(String id) {
+		String sql_stmt = "DELETE FROM transportationinfo WHERE id = '" + id + "'";
 		System.out.println(sql_stmt);
 		DBUtilities.ExecuteSQLStatement(sql_stmt);
 	}

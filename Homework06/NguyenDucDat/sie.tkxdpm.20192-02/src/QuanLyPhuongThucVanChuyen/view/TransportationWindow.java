@@ -263,8 +263,8 @@ public class TransportationWindow extends Container implements IView {
 
 		if (dialogResult == JOptionPane.YES_OPTION) {
 			try {
-				deleteRecord();
-
+				// deleteRecord();
+				controller.deleteRecord(txtID.getText());
 				loadRecords();
 			} catch (SQLException ex) {
 				System.out.println(ex.getMessage());
@@ -291,17 +291,18 @@ public class TransportationWindow extends Container implements IView {
 					addRecord ? "Confirm Add Record" : "Confirm Update Record?", JOptionPane.YES_NO_OPTION);
 
 			if (dialogResult == JOptionPane.YES_OPTION) {
-				TransportationInfo data = new TransportationInfo(siteCode, siteName,Integer.parseInt(byShip) , Integer.parseInt(byAir), others);
+				TransportationInfo data = new TransportationInfo(siteCode, siteName, Integer.parseInt(byShip),
+						Integer.parseInt(byAir), others);
 				try {
 					if (addRecord) {
 						// addNew();
 						// txtSiteCode.setd
-						
+
 						controller.addNew(data);
 						clearInputBoxes();
 					} else {
-						
-						controller.updateRecord(data,id);
+
+						controller.updateRecord(data, id);
 						// updateRecord();
 					}
 
