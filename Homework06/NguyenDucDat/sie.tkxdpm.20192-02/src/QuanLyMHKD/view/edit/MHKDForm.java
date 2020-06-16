@@ -12,8 +12,8 @@ import java.util.HashMap;
 
 public class MHKDForm implements IView {
     private final MHKDEditController controller;
-    private HashMap<String, Component> componentMap = new HashMap<>();
-    private MatHangKinhDoanh entity;
+    private final HashMap<String, Component> componentMap = new HashMap<>();
+    private final MatHangKinhDoanh entity;
 
     public MHKDForm(MHKDEditController controller, MatHangKinhDoanh entity) {
         this.controller = controller;

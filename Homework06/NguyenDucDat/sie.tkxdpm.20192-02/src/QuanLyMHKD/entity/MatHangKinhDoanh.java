@@ -19,26 +19,6 @@ public class MatHangKinhDoanh {
         this.id = id;
     }
 
-    public MatHangKinhDoanh() {
-    }
-
-    public Object getData(int i) {
-        switch (i) {
-            case 0:
-                return getId();
-            case 1:
-                return getName();
-            case 2:
-                return getMerchandise();
-            case 3:
-                return getQty();
-            case 4:
-                return getUnit();
-            default:
-                return null;
-        }
-    }
-
     public int getId() {
         return id;
     }

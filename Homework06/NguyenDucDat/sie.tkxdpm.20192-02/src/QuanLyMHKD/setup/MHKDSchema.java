@@ -8,8 +8,8 @@ import setup.database.TableBuilder;
 
 public class MHKDSchema implements ISetup {
     public String getRawSQL() {
-        MetaDataFactory<MatHangKinhDoanh> mdf = new MetaDataFactory<>();
-        MetaData md = mdf.createMetaData(MatHangKinhDoanh.class);
+        MetaDataFactory mdf = MetaDataFactory.getInstance();
+        MetaData md = mdf.getMetaData(MatHangKinhDoanh.class);
         return TableBuilder.buildSQLFromMetaData(md);
     }
 }

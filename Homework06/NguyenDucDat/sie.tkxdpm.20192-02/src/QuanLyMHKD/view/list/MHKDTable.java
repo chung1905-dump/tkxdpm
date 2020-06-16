@@ -3,7 +3,7 @@ package QuanLyMHKD.view.list;
 import QuanLyMHKD.entity.MatHangKinhDoanh;
 import QuanLyMHKD.model.MHKD;
 import main.view.IView;
-import QuanLyMHKD.view.list.table.TableModel;
+import main.view.list.table.TableModel;
 
 import javax.swing.*;
 import java.awt.*;
@@ -19,7 +19,7 @@ public class MHKDTable implements IView {
             MatHangKinhDoanh[] data = mhkd.loadAll();
 
             table = new JTable();
-            table.setModel(new TableModel(data));
+            table.setModel(new TableModel<>(data, MatHangKinhDoanh.class));
             JScrollPane scrollPane = new JScrollPane(table, JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED, JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 
             rootContainer.setLayout(new BorderLayout(0, 10));
