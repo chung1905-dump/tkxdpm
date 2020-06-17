@@ -24,7 +24,9 @@
             <children>
               <component id="55b71" class="javax.swing.JTable" binding="donHangTable">
                 <constraints/>
-                <properties/>
+                <properties>
+                  <autoCreateRowSorter value="false"/>
+                </properties>
               </component>
             </children>
           </scrollpane>

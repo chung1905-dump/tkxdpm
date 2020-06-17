@@ -17,7 +17,6 @@ import main.view.IView;
 public class DonHangController implements IController {
     @Override
     public IView run() {
-        // TransportationInfoController controller = new TransportationInfoController();
         return new DonHangGUI(this);
     }
 

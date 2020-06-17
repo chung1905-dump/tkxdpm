@@ -3,16 +3,18 @@ package QuanLyDonHang.view;
 import QuanLyDonHang.controller.DonHangController;
 import QuanLyDonHang.entity.DonHang;
 import main.view.IView;
+import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
 import java.awt.*;
+import java.sql.SQLException;
 import java.text.SimpleDateFormat;
 
 public class DonHangGUI implements IView {
     private JPanel mainPanel;
     private JTable donHangTable;
     private JTextField maDonHang;
-    private org.jdesktop.swingx.JXDatePicker ngayNhan;
+    private JXDatePicker ngayNhan;
     private JComboBox matHang;
     private JTable matHangTable;
     private JButton addMatHang;
@@ -26,11 +28,7 @@ public class DonHangGUI implements IView {
     public DonHangGUI(DonHangController controller) {
         this.controller = controller;
         addBtnListeners();
-        try {
-            donHangTable.setModel(controller.loadRecords());
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        donHangTableInit();
     }
 
     public Container draw() {
@@ -38,6 +36,29 @@ public class DonHangGUI implements IView {
         rootContainer.setLayout(new BorderLayout(0, 10));
         rootContainer.add(mainPanel);
         return rootContainer;
+    }
+
+    private void donHangTableInit() {
+        try {
+            donHangTable.setModel(controller.loadRecords());
+            donHangTable.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            donHangTable.getSelectionModel().addListSelectionListener(e -> {
+                try {
+                    if (donHangTable.getSelectedRow() >= 0) {
+                        Object maDonHang = donHangTable.getValueAt(donHangTable.getSelectedRow(), 0);
+                        Object ngayNhan = donHangTable.getValueAt(donHangTable.getSelectedRow(), 1);
+
+                        this.maDonHang.setText(maDonHang.toString());
+                        this.ngayNhan.setDate(new SimpleDateFormat("yyyy-MM-dd").parse(ngayNhan.toString()));
+                    }
+                } catch (Exception ex) {
+                    System.out.println(ex.getMessage());
+                }
+            });
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
     private void addBtnListeners() {
@@ -62,7 +83,12 @@ public class DonHangGUI implements IView {
             }
         });
         xoaButton.addActionListener(e -> {
-            controller.deleteRecord(maDonHang.getText());
+            try {
+                controller.deleteRecord(maDonHang.getText());
+                donHangTable.setModel(controller.loadRecords());
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            }
         });
         quayLaiButton.addActionListener(e -> controller.moveToHome());
     }
