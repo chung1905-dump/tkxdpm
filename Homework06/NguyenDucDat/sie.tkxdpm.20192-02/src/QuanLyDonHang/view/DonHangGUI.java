@@ -6,6 +6,7 @@ import main.view.IView;
 import org.jdesktop.swingx.JXDatePicker;
 
 import javax.swing.*;
+import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.sql.SQLException;
 import java.text.SimpleDateFormat;
@@ -28,6 +29,7 @@ public class DonHangGUI implements IView {
     public DonHangGUI(DonHangController controller) {
         this.controller = controller;
         addBtnListeners();
+        donHangFormInit();
         donHangTableInit();
     }
 
@@ -36,6 +38,14 @@ public class DonHangGUI implements IView {
         rootContainer.setLayout(new BorderLayout(0, 10));
         rootContainer.add(mainPanel);
         return rootContainer;
+    }
+
+    private void donHangFormInit() {
+        JFormattedTextField dateField = new JFormattedTextField();
+        dateField.setFocusable(false);
+        dateField.setBorder(new EmptyBorder(0, 0, 0, 0));
+        dateField.setBackground(new Color(242, 242, 242));
+        ngayNhan.setEditor(dateField);
     }
 
     private void donHangTableInit() {
