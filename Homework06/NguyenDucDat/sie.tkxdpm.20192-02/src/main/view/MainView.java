@@ -24,6 +24,7 @@ public class MainView implements IView {
         addBtn("Danh sach mat hang can dat" , e -> controller.moveToListProduct());
         addBtn("Quan ly mat hang" , e -> controller.moveToMatHang());
         addBtn("Quan ly don hang" , e -> controller.moveToDonHang());
+        addBtn("Xac nhan don hang" , e -> controller.moveToDonHang());
         addBtn("QUIT", e -> System.exit(0));
         return rootContainer;
     }

@@ -5,6 +5,7 @@ import QuanLyDSMatHang.controller.MatHangListController;
 import QuanLyDonHang.controller.DonHangController;
 import QuanLyMHKD.controller.MHKDListController;
 import QuanLyPhuongThucVanChuyen.controller.TransportationInfoController;
+import XacNhanDonHang.controller.XacNhanDonHangController;
 import main.Application;
 import main.view.MainView;
 import main.view.IView;
@@ -32,6 +33,10 @@ public class MainController implements IController {
 
     public void moveToDonHang() {
         Application.runController(new DonHangController(), Application.ANIM_SWIPE_LEFT);
+    }
+    
+    public void moveToXacNhanDonHang() {
+        Application.runController(new XacNhanDonHangController(), Application.ANIM_SWIPE_LEFT);
     }
 
     public void moveToHome() {
